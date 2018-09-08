@@ -25,10 +25,9 @@ public abstract class ChessPiece {
 
     //    This method returns the position of the piece in the format single letter (a..h) followed by a single digit (1..8).
     public String getPosition() {
-        return "" + this.alphabet[column] + (row + 1);
+        return "" + (char)('a' + column) + (row + 1);
     }
 
-//    @TODO
     //    This method sets the position of the piece to the appropriate row and column based on the argument, which in the format
     // single letter (a..h) followed by a single digit (1..8). If the position is illegal for any of the two reasons mentioned earlier, throw the stated exception.
     public void setPosition(String position) throws IllegalPositionException {

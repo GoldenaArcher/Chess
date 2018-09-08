@@ -10,52 +10,47 @@ public class ChessBoard {
         initialize();
     }
 
-//    @TODO rewrite the set piece
 //    this is a helper function to implements the chess pieces on the board for initialization
-    private void initializePieces(ChessPiece.Color color, int column, int row) {
+    private void initializePieces(ChessPiece.Color color, int column, int row, String position) {
         switch (column) {
             case 0:
             case 7:
-                board[row][column] = new Rook(board, color, row, column);
+                placePiece(new Rook(board, color, row, column), position);
                 break;
             case 1:
             case 6:
-                board[row][column] = new Knight(board, color, row, column);
+                placePiece(new Knight(board, color, row, column), position);
                 break;
             case 2:
             case 5:
-                board[row][column] = new Bishop(board, color, row, column);
+                placePiece(new Bishop(board, color, row, column), position);
                 break;
             case 4:
-                board[row][column] = new King(board, color, row, column);
+                placePiece(new King(board, color, row, column), position);
                 break;
             default:
-                board[row][column] = new Queen(board, color, row, column);
+                placePiece(new Queen(board, color, row, column), position);
         }
     }
 
-    //    @TODO rewrite the set piece
 //    This method initializes the board to the standard chess opening state with indexing as shown in the figure. This method
 // should use the constructors of the appropriate pieces, and call placePiece below to place the newly constructed pieces in the right position.
     private void initialize() {
 //        To initialize piece into correct position, i.e.,a1 is the white rook etc. Refer to chess rules for details
         ChessPiece.Color black = ChessPiece.Color.BLACK;
         ChessPiece.Color white = ChessPiece.Color.WHITE;
+        String position;
         for (int row = 0; row < 8; row++) {   // i refers to the digit, and row
             for (int column = 0; column < 8; column++) {   // j refers to the alphabet or letter, and column
-                switch (row) {
-                    case 0:     // in this case, it starts with X8, and all X8 are the black pieces
-                        initializePieces(black, column, row);
-                        break;
-                    case 1:     // all X7 are the black pawns
-                        board[row][column] = new Pawn(board, black, row, column);
-                        break;
-                    case 6:     // all X2 are the white pawns
-                        board[row][column] = new Pawn(board, black, row, column);
-                        break;
-                    case 7:     // all the X1 are the white pieces
-                        initializePieces(white, column, row);
-                        break;
+                position = "" + (char)('a' + column) + (row + 1);
+                if (row == 0){  //  // in this case, it starts with X8, and all X8 are the black pieces
+                    initializePieces(black, column, row, position);
+                } else if (row == 1) { // all X7 are the black pawns
+                    placePiece(new Pawn(board, black, row, column), position);
+                } else if (row == 6) { // all X2 are the white pawns
+                    placePiece(new Pawn(board, white, row, column), position);
+                } else if (row == 7) { // all the X1 are the white pieces
+                    initializePieces(white, column, row, position);
                 }
             }
         }
@@ -66,13 +61,20 @@ public class ChessBoard {
 // in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call
 // an appropriate method in the ChessPiece class (i.e., setPosition) to set the piece's position
     public boolean placePiece(ChessPiece piece, String position){
+        String fromPosition = piece.getPosition();
+        int fromLetter = fromPosition.charAt(0) - 'a', toLetter = position.charAt(0) - 'a';
+        int fromDigit = fromPosition.charAt(1) - '1', toDigit = (int)position.charAt(1) - '1';
         try {
             ChessPiece toPiece = getPiece(position);
-            if (toPiece.getColor() == piece.getColor()) {    // if there already exists a chess piece with same color
+            // that to position can be empty or the chess piece's different, in that case, current chess piece is placed at that direction
+            if (toPiece == null){
+                board[toDigit][toLetter] = piece;
+            } else if (toPiece.getColor() != piece.getColor()) {
+                board[fromDigit][fromLetter] = null;
+                board[toDigit][toLetter] = piece;
+                piece.setPosition(position);
+            } else  // if there already exists a chess piece with same color
                 return false;
-            } else {        // else that to position can be empty or the chess piece's different, in that case, current chess piece is placed at that direction
-                toPiece.setPosition(position);
-            }
         } catch (IllegalPositionException e) {
             System.out.println("Unable to place " + piece.getColor() + " " + piece.getClass() + " to position " + position);
             return false;
