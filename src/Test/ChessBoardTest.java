@@ -10,7 +10,7 @@ public class ChessBoardTest {
 
     @Test
     public void placePiece() {
-        placePiece(new Rook(chessBoard, ChessPiece.Color.BLACK, 1, 1), "a3");
+        chessBoard.placePiece(new Rook(chessBoard, ChessPiece.Color.BLACK), "a3");
     }
 
     @Test

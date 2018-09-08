@@ -55,8 +55,7 @@ public class ChessBoard {
             }
         }
     }
-
-//    @TODO need to call set position of chess piece
+    
 //    This method tries to place the given piece at a given position, and returns true if successful, and false if there is
 // already a piece of the same player in the given position or the position was illegal for any of the two reasons mentioned
 // in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call
@@ -70,6 +69,7 @@ public class ChessBoard {
             // that to position can be empty or the chess piece's different, in that case, current chess piece is placed at that direction
             if (toPiece == null){
                 board[toDigit][toLetter] = piece;
+                piece.setPosition(position);
             } else if (toPiece.getColor() != piece.getColor()) {
                 board[fromDigit][fromLetter] = null;
                 board[toDigit][toLetter] = piece;
@@ -77,6 +77,7 @@ public class ChessBoard {
             } else  // if there already exists a chess piece with same color
                 return false;
         } catch (IllegalPositionException e) {
+            System.out.println(e.getMessage());
             System.out.println("Unable to place " + piece.getColor() + " " + piece.getClass() + " to position " + position);
             return false;
         }

@@ -31,7 +31,7 @@ public abstract class ChessPiece {
     // single letter (a..h) followed by a single digit (1..8). If the position is illegal for any of the two reasons mentioned earlier, throw the stated exception.
     public void setPosition(String position) throws IllegalPositionException {
         int letter = position.charAt(0) - 'a';
-        int digit = position.charAt(1) - 1;
+        int digit = position.charAt(1) - '1';
         if (letter > 7 || letter < 0 || digit < 0 || digit > 7)
             throw new IllegalPositionException("Position is illegal, it must be between a1 to h8");
         row = digit;
