@@ -1,8 +1,7 @@
 package Main.ChessPieces;
-import Main.ChessBoard;
 
 public class King extends ChessPiece {
-    public King (ChessBoard chessBoard, Color color, int row, int column) {
+    public King (ChessPiece[][] chessBoard, Color color, int row, int column) {
         super(chessBoard, color, row, column);
     }
 

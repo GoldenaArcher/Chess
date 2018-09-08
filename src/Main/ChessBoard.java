@@ -3,13 +3,10 @@ package Main;
 import Main.ChessPieces.*;
 
 public class ChessBoard {
-    private ChessPiece[][] chessBoard;
-    private int[] digit;
+    private ChessPiece[][] board;
 
     public ChessBoard() {
-        chessBoard = new ChessPiece[8][8];
-        digit = new int[128];
-        initializeDigit();
+        board = new ChessPiece[8][8];
         initialize();
     }
 
@@ -19,21 +16,21 @@ public class ChessBoard {
         switch (column) {
             case 0:
             case 7:
-                chessBoard[row][column] = new Rook(chessBoard, color, row, column);
+                board[row][column] = new Rook(board, color, row, column);
                 break;
             case 1:
             case 6:
-                chessBoard[row][column] = new Knight(chessBoard, color, row, column);
+                board[row][column] = new Knight(board, color, row, column);
                 break;
             case 2:
             case 5:
-                chessBoard[row][column] = new Bishop(chessBoard, color, row, column);
+                board[row][column] = new Bishop(board, color, row, column);
                 break;
             case 4:
-                chessBoard[row][column] = new King(chessBoard, color, row, column);
+                board[row][column] = new King(board, color, row, column);
                 break;
             default:
-                chessBoard[row][column] = new Queen(chessBoard, color, row, column);
+                board[row][column] = new Queen(board, color, row, column);
         }
     }
 
@@ -49,10 +46,10 @@ public class ChessBoard {
                         initializePieces(black, column, row);
                         break;
                     case 1:     // all X7 are the black pawns
-                        chessBoard[row][column] = new Pawn(chessBoard, black, row, column));
+                        board[row][column] = new Pawn(board, black, row, column));
                         break;
                     case 6:     // all X2 are the white pawns
-                        chessBoard[row][column] = new Pawn(chessBoard, black, row, column);
+                        board[row][column] = new Pawn(board, black, row, column);
                         break;
                     case 7:     // all the X1 are the white pieces
                         initializePieces(white, column, row);
@@ -60,17 +57,6 @@ public class ChessBoard {
                 }
             }
         }
-    }
-
-    private void initializeDigit() {
-        digit['a'] = 0;
-        digit['b'] = 1;
-        digit['c'] = 2;
-        digit['d'] = 3;
-        digit['e'] = 4;
-        digit['f'] = 5;
-        digit['g'] = 6;
-        digit['h'] = 7;
     }
 
 //    @TODO
@@ -82,7 +68,7 @@ public class ChessBoard {
 //    @TODO
 //    given a position, and try to find if there is a piece on the chess board
     public ChessPiece getPiece(String position) throws IllegalPositionException {
-        return chessBoard[digit[position.charAt(0)]][position.charAt(1) - 1 - 48];
+        return null
     }
 
 //    given 2 index, and find the position of the position of the 2 index
@@ -97,8 +83,8 @@ public class ChessBoard {
             for (int i = 0; i < 8; i++) {
                 res += "│";
                 for (int j = 0; j < 8; j++) {
-                    if (chessBoard[i][j] != null) {
-                        res += chessBoard[i][j] + "│";
+                    if (board[i][j] != null) {
+                        res += board[i][j] + "│";
                     } else {
                         res += "  │";
                     }
