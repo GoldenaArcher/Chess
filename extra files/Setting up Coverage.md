@@ -1,6 +1,8 @@
 # Setting up IntelliJ IDEA Coverage
-Here are the basic steps for setting up and creating a report of your code coverage with 
-IntelliJ;
+
+*This is an example from previous class, and just for reference of how to set up the coverage test*
+
+Here are the basic steps for setting up and creating a report of your code coverage with IntelliJ;
 
 1. Update your test runner. All teams started with an AllTests class in their test directory, so it just needs to be 
    modified to include all test classes in the project. Every test class should be included in the AllTests 
