@@ -1,8 +1,10 @@
 package Main.ChessPieces;
 
+import Main.ChessBoard;
+
 public class Rook extends  ChessPiece{
-    public Rook (ChessPiece[][] chessBoard, Color color, int row, int column) {
-        super(chessBoard, color, row, column);
+    public Rook (ChessBoard board, Color color) {
+        super(board, color);
     }
 
     @Override

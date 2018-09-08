@@ -11,25 +11,25 @@ public class ChessBoard {
     }
 
 //    this is a helper function to implements the chess pieces on the board for initialization
-    private void initializePieces(ChessPiece.Color color, int column, int row, String position) {
+    private void initializePieces(ChessPiece.Color color, int column, String position) {
         switch (column) {
             case 0:
             case 7:
-                placePiece(new Rook(board, color, row, column), position);
+                placePiece(new Rook(this, color), position);
                 break;
             case 1:
             case 6:
-                placePiece(new Knight(board, color, row, column), position);
+                placePiece(new Knight(this, color), position);
                 break;
             case 2:
             case 5:
-                placePiece(new Bishop(board, color, row, column), position);
+                placePiece(new Bishop(this, color), position);
                 break;
             case 4:
-                placePiece(new King(board, color, row, column), position);
+                placePiece(new King(this, color), position);
                 break;
             default:
-                placePiece(new Queen(board, color, row, column), position);
+                placePiece(new Queen(this, color), position);
         }
     }
 
@@ -44,18 +44,19 @@ public class ChessBoard {
             for (int column = 0; column < 8; column++) {   // j refers to the alphabet or letter, and column
                 position = "" + (char)('a' + column) + (row + 1);
                 if (row == 0){  //  // in this case, it starts with X8, and all X8 are the black pieces
-                    initializePieces(black, column, row, position);
+                    initializePieces(black, column, position);
                 } else if (row == 1) { // all X7 are the black pawns
-                    placePiece(new Pawn(board, black, row, column), position);
+                    placePiece(new Pawn(this, black), position);
                 } else if (row == 6) { // all X2 are the white pawns
-                    placePiece(new Pawn(board, white, row, column), position);
+                    placePiece(new Pawn(this, white), position);
                 } else if (row == 7) { // all the X1 are the white pieces
-                    initializePieces(white, column, row, position);
+                    initializePieces(white, column, position);
                 }
             }
         }
     }
 
+//    @TODO need to call set position of chess piece
 //    This method tries to place the given piece at a given position, and returns true if successful, and false if there is
 // already a piece of the same player in the given position or the position was illegal for any of the two reasons mentioned
 // in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call

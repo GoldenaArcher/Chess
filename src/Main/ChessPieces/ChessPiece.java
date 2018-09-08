@@ -1,21 +1,20 @@
 package Main.ChessPieces;
 
+import Main.ChessBoard;
 import Main.IllegalPositionException;
 
 public abstract class ChessPiece {
     public enum Color {BLACK, WHITE}
 
-    protected ChessPiece[][] board;
+    protected ChessBoard board;
     protected Color color;
     protected int row, column;
     private char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 
     //    A piece of chess piece needs color as it's property, and position
-    public ChessPiece(ChessPiece[][] board, Color color, int row, int column) {
+    public ChessPiece(ChessBoard board, Color color) {
         this.board = board;
         this.color = color;
-        this.row = row;
-        this.column = column;
     }
 
     //    This method returns the color of the piece. There is no need for a setColor method because a piece cannot change color.

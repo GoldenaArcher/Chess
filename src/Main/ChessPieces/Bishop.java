@@ -1,8 +1,10 @@
 package Main.ChessPieces;
 
+import Main.ChessBoard;
+
 public class Bishop extends  ChessPiece{
-    public Bishop (ChessPiece[][] chessBoard, Color color, int row, int column) {
-        super(chessBoard, color, row, column);
+    public Bishop (ChessBoard board, Color color) {
+        super(board, color);
     }
 
     @Override
