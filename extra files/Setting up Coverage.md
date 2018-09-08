@@ -46,11 +46,10 @@ Make sure you hit OK or Apply to save the configuration.
    touched by tests. Clicking it for a yellow or green "if" statement will ever show the number of times the "if" evaluated 
    to true and false. 
    ![images of example7](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg7.png)
-   ![images of example8](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg8.png)
 
-7. Creating a coverage report. In the coverage window that appeared, you can generate an HTML web page of coverage 
+7. __Creating a coverage report.__ In the coverage window that appeared, you can generate an HTML web page of coverage 
    information.To do so, click the fifth button down on the left side of the window (the one that looks like a rectangle 
    with a green arrow pointing upwards). You'll be prompted to choose a folder where the report is saved. I recommend 
    creating a new subdirectory, because quite a few files will be generated. Open the index.html page generated to go through
    the results:
-   ![images of example9](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg9.png)
+   ![images of example8](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg8.png)
