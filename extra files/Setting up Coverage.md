@@ -8,6 +8,7 @@ Here are the basic steps for setting up and creating a report of your code cover
    modified to include all test classes in the project. Every test class should be included in the AllTests 
    @Suite.SuiteClasses block. Make sure all the packages you've defined are included as imports as well. Here's a sample 
    test runner from last semester:
+   ![Image of example1](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg1.png)
 
 2. Configure how IntelliJ manages coverage information. First, navigate to File->Settings and go to the Build, Execution, 
    Deployment tab. Then select Coverage. Select "Replace active suites with the new one" and apply the change. Check 
