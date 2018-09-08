@@ -35,6 +35,8 @@ public class ChessBoard {
     }
 
     //    @TODO rewrite the set piece
+//    This method initializes the board to the standard chess opening state with indexing as shown in the figure. This method
+// should use the constructors of the appropriate pieces, and call placePiece below to place the newly constructed pieces in the right position.
     private void initialize() {
 //        To initialize piece into correct position, i.e.,a1 is the white rook etc. Refer to chess rules for details
         ChessPiece.Color black = ChessPiece.Color.BLACK;
@@ -46,7 +48,7 @@ public class ChessBoard {
                         initializePieces(black, column, row);
                         break;
                     case 1:     // all X7 are the black pawns
-                        board[row][column] = new Pawn(board, black, row, column));
+                        board[row][column] = new Pawn(board, black, row, column);
                         break;
                     case 6:     // all X2 are the white pawns
                         board[row][column] = new Pawn(board, black, row, column);
@@ -59,16 +61,29 @@ public class ChessBoard {
         }
     }
 
-//    @TODO
-//    place a piece on the position, if there's opponent's piece, also have to capture it
+//    This method tries to place the given piece at a given position, and returns true if successful, and false if there is
+// already a piece of the same player in the given position or the position was illegal for any of the two reasons mentioned
+// in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call
+// an appropriate method in the ChessPiece class (i.e., setPosition) to set the piece's position
     public boolean placePiece(ChessPiece piece, String position){
+        try {
+            ChessPiece toPiece = getPiece(position);
+            if (toPiece.getColor() == piece.getColor()) {    // if there already exists a chess piece with same color
+                return false;
+            } else {        // else that to position can be empty or the chess piece's different, in that case, current chess piece is placed at that direction
+                toPiece.setPosition(position);
+            }
+        } catch (IllegalPositionException e) {
+            System.out.println("Unable to place " + piece.getColor() + " " + piece.getClass() + " to position " + position);
+            return false;
+        }
         return true;
     }
 
 //    @TODO
 //    given a position, and try to find if there is a piece on the chess board
     public ChessPiece getPiece(String position) throws IllegalPositionException {
-        return null
+        return null;
     }
 
 //    given 2 index, and find the position of the position of the 2 index
