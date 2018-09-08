@@ -4,18 +4,19 @@
 
 Here are the basic steps for setting up and creating a report of your code coverage with IntelliJ;
 
-1. Update your test runner. All teams started with an AllTests class in their test directory, so it just needs to be 
+1. __Update your test runner.__ All teams started with an AllTests class in their test directory, so it just needs to be 
    modified to include all test classes in the project. Every test class should be included in the AllTests 
    @Suite.SuiteClasses block. Make sure all the packages you've defined are included as imports as well. Here's a sample 
    test runner from last semester:
    ![Image of example1](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg1.png)
 
-2. Configure how IntelliJ manages coverage information. First, navigate to File->Settings and go to the Build, Execution, 
+2. __Configure__ how IntelliJ manages coverage information. First, navigate to File->Settings and go to the Build, Execution, 
    Deployment tab. Then select Coverage. Select "Replace active suites with the new one" and apply the change. Check 
    "Activate Coverage View" as well if it's not already checked. This will overwrite old coverage information with the 
    new instead of accumulating coverage results from multiple run configurations.
+   ![Image of example2](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/pg2.png)
 
-3. Set up a JUnit run configuration. Go to Run->Edit Configurations. Click the + in the top left corner of the window and 
+3. __Set up a JUnit run configuration.__ Go to Run->Edit Configurations. Click the + in the top left corner of the window and 
    select JUnit. Name the configuration whatever you'd like. Click the "..." next to the "Class:" box and select your 
    AllTests class. Switch to the Code Coverage tab in the configurations window. Make sure IntelliJ IDEA is selected as 
    the coverage runner and select "Tracing." Make sure "Track per test coverage" is checked as well. In the "Classes and 
