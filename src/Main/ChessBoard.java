@@ -46,7 +46,7 @@ public class ChessBoard {
         String position;
         for (int row = 0; row < 8; row++) {   // i refers to the digit, and row
             for (int column = 0; column < 8; column++) {   // j refers to the alphabet or letter, and column
-                position = "" + (char)('a' + column) + (row + 1);
+                position = "" + (char)('a' + column) + (7 - row + 1);
                 if (row == 0){  //  // in this case, it starts with X8, and all X8 are the black pieces
                     initializePieces(black, column, position);
                 } else if (row == 1) { // all X7 are the black pawns
@@ -74,37 +74,32 @@ public class ChessBoard {
 // in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call
 // an appropriate method in the ChessPiece class (i.e., setPosition) to set the piece's position
     public boolean placePiece(ChessPiece piece, String position){
-        String fromPosition = piece.getPosition();
 //        if the position that piece is going to be placed is not legal, just return false
         if (!validPosition(position)) {
             return false;
         }
 
-        int fromLetter = fromPosition.charAt(0) - 'a', toLetter = position.charAt(0) - 'a';
-        int fromDigit = fromPosition.charAt(1) - '1', toDigit = (int)position.charAt(1) - '1';
+        int toLetter = position.charAt(0) - 'a';
+        int toDigit = 7 - (position.charAt(1) - '1');
         try {
             ChessPiece toPiece = getPiece(position);
             // that to position can be empty or the chess piece's different, in that case, current chess piece is placed at that direction
-            if (toPiece == null){
-                board[toDigit][toLetter] = piece;
-                piece.setPosition(position);
-            } else if (toPiece.getColor() != piece.getColor()) {
-                board[fromDigit][fromLetter] = null;
-                board[toDigit][toLetter] = piece;
-                piece.setPosition(position);
-            } else  // if there already exists a chess piece with same color
+            if (toPiece != null && toPiece.getColor() == piece.getColor()){ // if it's the same color, return false
                 return false;
+            } else {    // either put on the empty place or capture that piece
+                board[toDigit][toLetter] = piece;
+                return true;
+            }
         } catch (IllegalPositionException e) {
             System.out.println("Unable to place " + piece.getColor() + " " + piece.getClass() + " to position " + position);
             return false;
         }
-        return true;
     }
 
 //    given a position, and try to find if there is a piece on the chess board
     public ChessPiece getPiece(String position) throws IllegalPositionException {
         if (validPosition(position)) {
-            return board[position.charAt(1) - '1'][position.charAt(0) - 'a'];
+            return board[7 - (position.charAt(1) - '1')][position.charAt(0) - 'a'];
         } else {
             throw new IllegalPositionException("Position is illegal, it must be between a1 to h8");
         }
@@ -134,7 +129,7 @@ public class ChessBoard {
         }
 
         placePiece(fromPiece, to);
-        board[from.charAt(1) - '1'][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
+        board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
     }
 
     public String toString() {
