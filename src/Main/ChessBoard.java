@@ -10,7 +10,6 @@ public class ChessBoard {
 
     public ChessBoard() {
         board = new ChessPiece[8][8];
-        initialize();
     }
 
 //    this is a helper function to implements the chess pieces on the board for initialization
@@ -59,6 +58,15 @@ public class ChessBoard {
         }
     }
 
+    private boolean validPosition(String position){
+        if (position.length() != 2)
+            return false;
+
+        int letter = position.charAt(0) - 'a';
+        int digit = position.charAt(1) - '1';
+        return letter <= 7 || letter >= 0 && digit >= 0 && digit <= 7;
+    }
+
 //    This method tries to place the given piece at a given position, and returns true if successful, and false if there is
 // already a piece of the same player in the given position or the position was illegal for any of the two reasons mentioned
 // in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call
@@ -66,7 +74,7 @@ public class ChessBoard {
     public boolean placePiece(ChessPiece piece, String position){
         String fromPosition = piece.getPosition();
 
-        if (position.length() != 2) {
+        if (!validPosition(position)) {
             return false;
         }
 
@@ -93,11 +101,11 @@ public class ChessBoard {
 
 //    given a position, and try to find if there is a piece on the chess board
     public ChessPiece getPiece(String position) throws IllegalPositionException {
-        int letter = position.charAt(0) - 'a';
-        int digit = position.charAt(1) - '1';
-        if (letter > 7 || letter < 0 || digit < 0 || digit > 7 || position.length() != 2)
+        if (validPosition(position)) {
+            return board[position.charAt(1) - '1'][position.charAt(0) - 'a'];
+        } else {
             throw new IllegalPositionException("Position is illegal, it must be between a1 to h8");
-        return board[digit][letter];
+        }
     }
 
 //    @TODO
