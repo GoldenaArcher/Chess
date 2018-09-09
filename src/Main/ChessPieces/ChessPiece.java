@@ -3,6 +3,9 @@ package Main.ChessPieces;
 import Main.ChessBoard;
 import Main.IllegalPositionException;
 
+/**
+ * @author Lu Han
+ */
 public abstract class ChessPiece {
     public enum Color {BLACK, WHITE}
 

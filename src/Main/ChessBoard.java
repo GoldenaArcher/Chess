@@ -2,6 +2,9 @@ package Main;
 
 import Main.ChessPieces.*;
 
+/**
+ * @author Lu Han
+ */
 public class ChessBoard {
     private ChessPiece[][] board;
 
@@ -35,7 +38,7 @@ public class ChessBoard {
 
 //    This method initializes the board to the standard chess opening state with indexing as shown in the figure. This method
 // should use the constructors of the appropriate pieces, and call placePiece below to place the newly constructed pieces in the right position.
-    private void initialize() {
+    public void initialize() {
 //        To initialize piece into correct position, i.e.,a1 is the white rook etc. Refer to chess rules for details
         ChessPiece.Color black = ChessPiece.Color.BLACK;
         ChessPiece.Color white = ChessPiece.Color.WHITE;
@@ -55,13 +58,18 @@ public class ChessBoard {
             }
         }
     }
-    
+
 //    This method tries to place the given piece at a given position, and returns true if successful, and false if there is
 // already a piece of the same player in the given position or the position was illegal for any of the two reasons mentioned
 // in the description of getPiece. If an opponent's piece exists, that piece is captured. If successful, this method should call
 // an appropriate method in the ChessPiece class (i.e., setPosition) to set the piece's position
     public boolean placePiece(ChessPiece piece, String position){
         String fromPosition = piece.getPosition();
+
+        if (position.length() != 2) {
+            return false;
+        }
+
         int fromLetter = fromPosition.charAt(0) - 'a', toLetter = position.charAt(0) - 'a';
         int fromDigit = fromPosition.charAt(1) - '1', toDigit = (int)position.charAt(1) - '1';
         try {
@@ -77,23 +85,25 @@ public class ChessBoard {
             } else  // if there already exists a chess piece with same color
                 return false;
         } catch (IllegalPositionException e) {
-            System.out.println(e.getMessage());
             System.out.println("Unable to place " + piece.getColor() + " " + piece.getClass() + " to position " + position);
             return false;
         }
         return true;
     }
 
-//    @TODO
 //    given a position, and try to find if there is a piece on the chess board
     public ChessPiece getPiece(String position) throws IllegalPositionException {
-        return null;
+        int letter = position.charAt(0) - 'a';
+        int digit = position.charAt(1) - '1';
+        if (letter > 7 || letter < 0 || digit < 0 || digit > 7 || position.length() != 2)
+            throw new IllegalPositionException("Position is illegal, it must be between a1 to h8");
+        return board[digit][letter];
     }
 
-//    given 2 index, and find the position of the position of the 2 index
-
-
 //    @TODO
+//This method checks if moving the piece from the fromPosition to toPosition is a legal move. Legality is defined based
+// on the rules described above in Section 2.1. If the move is legal, it executes the move, changing the value of the
+// board as needed. Otherwise, the stated exception is thrown.
     public void move(String from, String to) throws IllegalMoveException {
     }
 

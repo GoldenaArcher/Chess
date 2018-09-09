@@ -2,6 +2,9 @@ package Main.ChessPieces;
 
 import Main.ChessBoard;
 
+/**
+ * @author Lu Han
+ */
 public class Knight extends  ChessPiece{
     public Knight (ChessBoard board, Color color) {
         super(board, color);
