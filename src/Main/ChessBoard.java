@@ -2,6 +2,8 @@ package Main;
 
 import Main.ChessPieces.*;
 
+import java.util.ArrayList;
+
 /**
  * @author Lu Han
  */
@@ -64,7 +66,7 @@ public class ChessBoard {
 
         int letter = position.charAt(0) - 'a';
         int digit = position.charAt(1) - '1';
-        return letter <= 7 || letter >= 0 && digit >= 0 && digit <= 7;
+        return letter <= 7 && letter >= 0 && digit >= 0 && digit <= 7;
     }
 
 //    This method tries to place the given piece at a given position, and returns true if successful, and false if there is
@@ -73,7 +75,7 @@ public class ChessBoard {
 // an appropriate method in the ChessPiece class (i.e., setPosition) to set the piece's position
     public boolean placePiece(ChessPiece piece, String position){
         String fromPosition = piece.getPosition();
-
+//        if the position that piece is going to be placed is not legal, just return false
         if (!validPosition(position)) {
             return false;
         }
@@ -108,11 +110,31 @@ public class ChessBoard {
         }
     }
 
-//    @TODO
+//    @TODO need to finish legal moves for other pieces before testing, and test after done with other legal moves implementation
 //This method checks if moving the piece from the fromPosition to toPosition is a legal move. Legality is defined based
 // on the rules described above in Section 2.1. If the move is legal, it executes the move, changing the value of the
 // board as needed. Otherwise, the stated exception is thrown.
     public void move(String from, String to) throws IllegalMoveException {
+        ChessPiece fromPiece, toPiece;
+
+        try {
+            fromPiece = getPiece(from);
+            toPiece = getPiece(to);
+        } catch (IllegalPositionException e) {
+            throw new IllegalMoveException("There is no piece you can move at " + from + " or " + to);
+        }
+
+        if (toPiece != null && toPiece.getColor() == fromPiece.getColor()) {
+            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces have the same color");
+        }
+
+        ArrayList<String> legalMove = fromPiece.legalMoves();
+        if (!legalMove.contains("to")) {
+            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
+        }
+
+        placePiece(fromPiece, to);
+        board[from.charAt(1) - '1'][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
     }
 
     public String toString() {

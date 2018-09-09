@@ -2,6 +2,8 @@ package Main.ChessPieces;
 
 import Main.ChessBoard;
 
+import java.util.ArrayList;
+
 /**
  * @author Lu Han
  */
@@ -11,13 +13,8 @@ public class Rook extends  ChessPiece{
     }
 
     @Override
-    public boolean move(String from, String to) {
-        return false;
-    }
-
-    @Override
-    boolean validMove(String position) {
-        return false;
+    public ArrayList<String> legalMoves() {
+        return null;
     }
 
     @Override

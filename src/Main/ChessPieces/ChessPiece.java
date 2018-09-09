@@ -3,6 +3,8 @@ package Main.ChessPieces;
 import Main.ChessBoard;
 import Main.IllegalPositionException;
 
+import java.util.ArrayList;
+
 /**
  * @author Lu Han
  */
@@ -41,9 +43,7 @@ public abstract class ChessPiece {
         column = letter;
     }
 
-    abstract public boolean move(String from, String to);
-
-    abstract boolean validMove(String position);
+    abstract public ArrayList<String> legalMoves();
 
     abstract public String toString();
 }
