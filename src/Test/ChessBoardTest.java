@@ -57,17 +57,17 @@ public class ChessBoardTest {
         switch (column) {
             case 0:
             case 7:
-                return piece instanceof Rook;
+                return piece instanceof Main.ChessPieces.Rook;
             case 1:
             case 6:
-                return piece instanceof Knight;
+                return piece instanceof Main.ChessPieces.Knight;
             case 2:
             case 5:
-                return piece instanceof Bishop;
+                return piece instanceof Main.ChessPieces.Bishop;
             case 4:
-                return piece instanceof King;
+                return piece instanceof Main.ChessPieces.King;
             default:
-                return piece instanceof Queen;
+                return piece instanceof Main.ChessPieces.Queen;
         }
     }
 
@@ -78,18 +78,17 @@ public class ChessBoardTest {
         ChessPiece.Color black = ChessPiece.Color.BLACK;
         ChessPiece.Color white = ChessPiece.Color.WHITE;
         String position;
-
         try {
             for (int row = 0; row < 8; row++) {
                 for (int column = 0; column < 8; column++) {
-                    position = "" + (char) ('a' + column) + (row + 1);
+                    position = "" + (char) ('a' + column) + (7 - row + 1);
                     ChessPiece piece = chessBoard.getPiece(position);
                     if (row == 0) {
                         assertTrue(testOtherPiece(piece, column) && piece.getColor() == black);
                     } else if (row == 1) {
-                        assertTrue(piece instanceof Pawn && piece.getColor() == black);
+                        assertTrue(piece instanceof Main.ChessPieces.Pawn && piece.getColor() == black);
                     } else if (row == 6) {
-                        assertTrue(piece instanceof Pawn && piece.getColor() == white);
+                        assertTrue(piece instanceof Main.ChessPieces.Pawn && piece.getColor() == white);
                     } else if (row == 7) {
                         assertTrue(testOtherPiece(piece, column) && piece.getColor() == white);
                     }

@@ -84,35 +84,6 @@ public class Pawn extends ChessPiece {
             System.out.println("Error case in the legalMove of the pawn, please come back and check");
         }
 
-        /*
-//        need to check 4 position for pawn
-        try {
-            String frontPosition = "" + (char) (column + 'a');   // the column is always the same, but row can be differed
-            frontPosition += color == Color.BLACK ? 7 - (row - '1') + 1 : 7 - (row - '1') - 1;
-            if (board.getPiece(frontPosition) == null)
-                res.add(frontPosition);
-//            check if pawn can move 2 instead of 1 -> the 1st move
-            if ((color == Color.BLACK && column == 1) || (color == Color.WHITE && column == 6)) {
-                frontPosition = "" + (char) (column + 'a');
-                frontPosition += color == Color.BLACK ? 7 - (row - '1') + 2 : 7 - (row - '1') - 2;
-                if (board.getPiece(frontPosition) == null)
-                    res.add(frontPosition);
-            }
-//            check if pawn can move diagonally, first to the right
-            frontPosition = "" + (char) (column + 'a') + 1;
-            frontPosition += color == Color.BLACK ? 7 - (row - '1') + 1 : 7 - (row - '1') - 1;
-            if (board.getPiece(frontPosition) != null && color != board.getPiece(frontPosition).getColor())
-                res.add(frontPosition);
-//            Then to the left
-            frontPosition = "" + (char) ((column + 'a') - 1);
-            frontPosition += color == Color.BLACK ? 7 - (row - '1') + 1 : 7 - (row - '1') - 1;
-            if (board.getPiece(frontPosition) != null && color != board.getPiece(frontPosition).getColor())
-                res.add(frontPosition);
-        } catch (IllegalPositionException e) {
-            System.out.println("Meeting edge case in Pawn' legalMoves method");
-        }
-        */
-
         return res;
     }
 

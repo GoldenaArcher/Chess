@@ -1,5 +1,7 @@
 package Test;
 
+import Main.ChessBoard;
+import Test.ChessPieces.PawnTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import junit.framework.JUnit4TestAdapter;
@@ -7,6 +9,8 @@ import junit.framework.JUnit4TestAdapter;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         TestChess.class,
+        ChessBoardTest.class,
+        PawnTest.class,
 })
 
 public class AllTests {
