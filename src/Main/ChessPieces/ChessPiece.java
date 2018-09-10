@@ -28,7 +28,7 @@ public abstract class ChessPiece {
 
     //    This method returns the position of the piece in the format single letter (a..h) followed by a single digit (1..8).
     public String getPosition() {
-        return "" + (char)('a' + column) + (row + 1);
+        return "" + (char)('a' + column) + (7- row + 1);
     }
 
     //    This method sets the position of the piece to the appropriate row and column based on the argument, which in the format

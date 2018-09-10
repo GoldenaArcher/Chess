@@ -88,6 +88,7 @@ public class ChessBoard {
                 return false;
             } else {    // either put on the empty place or capture that piece
                 board[toDigit][toLetter] = piece;
+                piece.setPosition(position);
                 return true;
             }
         } catch (IllegalPositionException e) {

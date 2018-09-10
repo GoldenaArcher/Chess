@@ -3,6 +3,7 @@ package Test;
 import Main.ChessBoard;
 import Main.ChessPieces.*;
 import Main.IllegalPositionException;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,7 +13,11 @@ import static org.junit.Assert.*;
  * @author Lu Han
  */
 public class ChessBoardTest {
-    private ChessBoard chessBoard = new ChessBoard();
+    private ChessBoard chessBoard;
+    @Before
+    public void setUp() {
+        chessBoard = new ChessBoard();
+    }
 
     @Test
     public void placePiece() {
