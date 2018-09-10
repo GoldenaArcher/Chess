@@ -63,7 +63,7 @@ public class Pawn extends ChessPiece {
                 String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 1);
                 if (board.getPiece(position) == null)
                     res.add(position);
-                if (column == 1) {  // black pawn can move 2 steps of it's initial move
+                if (row == 1) {  // black pawn can move 2 steps of it's initial move
                     position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 2);
                     if (board.getPiece(position) == null)
                         res.add(position);
@@ -73,7 +73,7 @@ public class Pawn extends ChessPiece {
                 String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 1);
                 if (board.getPiece(position) == null)
                     res.add(position);
-                if (column == 6) {  // black pawn can move 2 steps of it's initial move
+                if (row == 6) {  // black pawn can move 2 steps of it's initial move
                     position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 2);
                     if (board.getPiece(position) == null)
                         res.add(position);

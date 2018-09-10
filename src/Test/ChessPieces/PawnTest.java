@@ -63,6 +63,7 @@ public class PawnTest {
         ChessBoard board = new ChessBoard();
         Pawn pawnBlackA7 = new Pawn(board, BLACK);
         board.placePiece(pawnBlackA7, "a7");
+        System.out.println(board.toString());
         for (String str: pawnBlackA7.legalMoves()) {
             System.out.println(str);
         }
