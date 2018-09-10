@@ -33,14 +33,14 @@ public class Pawn extends ChessPiece {
         ArrayList<String> res = new ArrayList<>();
         try {
             if (column > 0) {   // check left
-                String position = "" + (char) (column + 'a' - 1) + (char) (7 - row + '1' + 1);
+                String position = "" + (char) (column + 'a' - 1) + (char) (7 - row + '1');
                 ChessPiece piece = board.getPiece(position);
                 if (piece != null && piece.getColor() != color)
                     res.add(position);
             }
 
             if (column < 7) { // check right
-                String position = "" + (char) (column + 'a' + 1) + (char) (7 - row + '1' + 1);
+                String position = "" + (char) (column + 'a' + 1) + (char) (7 - row + '1');
                 ChessPiece piece = board.getPiece(position);
                 if (piece != null && piece.getColor() != color)
                     res.add(position);
@@ -59,7 +59,7 @@ public class Pawn extends ChessPiece {
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
         try {
-            if (color == Color.BLACK && column < 7) {  // only need to check from up to down since pawn cannot move backward
+            if (color == Color.BLACK && column < 8) {  // only need to check from up to down since pawn cannot move backward
                 String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 1);
                 if (board.getPiece(position) == null)
                     res.add(position);
