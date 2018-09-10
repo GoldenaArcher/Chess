@@ -146,14 +146,37 @@ public class PawnTest {
 //        Set another piece at A4, A2 should only have one valid move
         board.placePiece(whitePawnA4, "a4");
         assertTrue(whitePawnA2.legalMoves().contains("a3") && whitePawnA2.legalMoves().size() == 1);
-//        If there is a piece at A3, its only legal move is H4
+//        If there is a piece at A3, its only legal move is A5
         assertTrue(whitePawnA4.legalMoves().contains("a5") && whitePawnA2.legalMoves().size() == 1);
-        //        Set another piece at h6, h7 should have no valid move
+        //        Set another piece at h6, A3 should have no valid move
         board.placePiece(whitePawnA4, "a3");
         assertEquals(0, whitePawnA2.legalMoves().size());
-//        Set a different color piece at G6, H7 should have 1 valid move since it can capture G6
+//        Set a different color piece at B3, A2 should have 1 valid move since it can capture G6
         Pawn blackPawnB3 = new Pawn(board, BLACK);
         board.placePiece(blackPawnB3, "b3");
         assertTrue(whitePawnA2.legalMoves().contains("b3") && whitePawnA2.legalMoves().size() == 1);
     }
+
+//    White Pawn Test. Put a black pawn on H row, and check it's legal moves
+@Test
+public void legalMovesMostRightWhite() {
+    ChessBoard board = new ChessBoard();
+    Pawn whitePawnH2 = new Pawn(board, WHITE);
+    Pawn whitePawnH4 = new Pawn(board, WHITE);
+//        Set the black pawn on the board with it's initial position. In this case, H2 should have 2 valid moves
+    board.placePiece(whitePawnH2, "h2");
+    assertTrue(whitePawnH2.legalMoves().containsAll(Arrays.asList("h3", "h4")));
+//        Set another piece at H4, H2 should only have one valid move
+    board.placePiece(whitePawnH4, "h4");
+    assertTrue(whitePawnH2.legalMoves().contains("h3") && whitePawnH2.legalMoves().size() == 1);
+//        If there is a piece at H4, its only legal move is H5
+    assertTrue(whitePawnH4.legalMoves().contains("h5") && whitePawnH2.legalMoves().size() == 1);
+    //        Set another piece at h3, h4 should have no valid move
+    board.placePiece(whitePawnH4, "h3");
+    assertEquals(0, whitePawnH2.legalMoves().size());
+//        Set a different color piece at G3, H2 should have 1 valid move since it can capture G6
+    Pawn blackPawnG3 = new Pawn(board, BLACK);
+    board.placePiece(blackPawnG3, "g3");
+    assertTrue(whitePawnH2.legalMoves().contains("g3") && whitePawnH2.legalMoves().size() == 1);
+}
 }

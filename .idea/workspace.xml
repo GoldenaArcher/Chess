@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d74485b-b0a7-48af-ad48-4756d941ffe7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/AllTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/AllTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -76,13 +74,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="20" />
-          <entry key="java" value="13248" />
+          <entry key="java" value="13310" />
           <entry key="md" value="294" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13248" />
+          <entry key="JAVA" value="13310" />
           <entry key="Markdown" value="294" />
           <entry key="PLAIN_TEXT" value="20" />
         </counts>
@@ -132,7 +130,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
+            <state relative-caret-position="-631">
               <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -146,8 +144,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="105" column="44" selection-start-line="105" selection-start-column="44" selection-end-line="105" selection-end-column="44" />
+            <state relative-caret-position="352">
+              <caret line="179" column="57" lean-forward="true" selection-start-line="179" selection-start-column="57" selection-end-line="179" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getColor#0;class#PawnTest#0" />
@@ -187,6 +185,7 @@
       <find>toString</find>
       <find>position</find>
       <find>placepiece</find>
+      <find>toStrin</find>
       <find>capture</find>
     </findStrings>
     <replaceStrings>
@@ -312,7 +311,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/assignment/Chess/src/Main/ChessPieces/Rook.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536570910246" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536572439185" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -345,7 +344,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PawnTest">
+  <component name="RunManager" selected="JUnit.PawnTest.legalMovesMostRightWhite">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -354,23 +353,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChessBoardTest.initialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Chess" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.ChessBoardTest" />
-      <option name="METHOD_NAME" value="initialize" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -441,6 +423,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PawnTest.legalMovesMostRightWhite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.ChessPieces.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test.ChessPieces" />
+      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.PawnTest" />
+      <option name="METHOD_NAME" value="legalMovesMostRightWhite" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RunAllTests" type="JUnit" factoryName="JUnit">
       <module name="Chess" />
       <extension name="coverage" sample_coverage="false">
@@ -484,18 +483,18 @@
     <list>
       <item itemvalue="JUnit.RunAllTests" />
       <item itemvalue="JUnit.PawnTest.legalMovesMostLeftBlack" />
-      <item itemvalue="JUnit.ChessBoardTest.initialize" />
       <item itemvalue="JUnit.PawnTest.legalMovesMostLeftWhite" />
       <item itemvalue="JUnit.PawnTest" />
       <item itemvalue="JUnit.PawnTest.legalMovesMostRightBlack" />
+      <item itemvalue="JUnit.PawnTest.legalMovesMostRightWhite" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PawnTest.legalMovesMostRightWhite" />
         <item itemvalue="JUnit.PawnTest" />
         <item itemvalue="JUnit.PawnTest.legalMovesMostRightBlack" />
         <item itemvalue="JUnit.PawnTest.legalMovesMostLeftWhite" />
         <item itemvalue="JUnit.PawnTest.legalMovesMostLeftBlack" />
-        <item itemvalue="JUnit.ChessBoardTest.initialize" />
       </list>
     </recent_temporary>
   </component>
@@ -512,17 +511,11 @@
       <workItem from="1536318273534" duration="7237000" />
       <workItem from="1536333621159" duration="694000" />
       <workItem from="1536335632347" duration="17562000" />
-      <workItem from="1536430093278" duration="50455000" />
+      <workItem from="1536430093278" duration="51952000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PawnTest - 2018.09.10 at 03h 05m 45s.xml">
-      <configuration name="PawnTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PawnTest_legalMovesMostLeftWhite - 2018.09.10 at 03h 06m 47s.xml">
-      <configuration name="PawnTest.legalMovesMostLeftWhite" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PawnTest_legalMovesMostLeftWhite - 2018.09.10 at 03h 07m 14s.xml">
       <configuration name="PawnTest.legalMovesMostLeftWhite" configurationId="JUnit" />
     </history-entry>
@@ -547,9 +540,15 @@
     <history-entry file="PawnTest - 2018.09.10 at 03h 14m 50s.xml">
       <configuration name="PawnTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PawnTest_legalMovesMostRightWhite - 2018.09.10 at 03h 36m 48s.xml">
+      <configuration name="PawnTest.legalMovesMostRightWhite" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PawnTest_legalMovesMostRightWhite - 2018.09.10 at 03h 37m 41s.xml">
+      <configuration name="PawnTest.legalMovesMostRightWhite" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75948000" />
+    <option name="totallyTimeSpent" value="77445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1633" height="1053" extended-state="6" />
@@ -673,96 +672,6 @@
           <line>69</line>
           <properties />
           <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java</url>
-          <line>143</line>
-          <properties />
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java</url>
-          <line>144</line>
-          <properties />
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="181" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>33</line>
-          <properties />
-          <option name="timeStamp" value="188" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>32</line>
-          <properties />
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>34</line>
-          <properties />
-          <option name="timeStamp" value="190" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>35</line>
-          <properties />
-          <option name="timeStamp" value="191" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="192" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="193" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="194" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>41</line>
-          <properties />
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>42</line>
-          <properties />
-          <option name="timeStamp" value="196" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>43</line>
-          <properties />
-          <option name="timeStamp" value="197" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>44</line>
-          <properties />
-          <option name="timeStamp" value="198" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="199" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -970,7 +879,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
+        <state relative-caret-position="-631">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -982,8 +891,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="105" column="44" selection-start-line="105" selection-start-column="44" selection-end-line="105" selection-end-column="44" />
+        <state relative-caret-position="352">
+          <caret line="179" column="57" lean-forward="true" selection-start-line="179" selection-start-column="57" selection-end-line="179" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getColor#0;class#PawnTest#0" />
