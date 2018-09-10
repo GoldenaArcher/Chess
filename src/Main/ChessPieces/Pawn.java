@@ -26,6 +26,11 @@ public class Pawn extends ChessPiece {
 // rook, a bishop, or a knight, of the same colour as the pawn, at the player's choice and without taking into account
 // the other pieces still remaining on the chessboard. The effect of the promoted piece is immediate and permanent!
     private void promotion() {
+        System.out.println("Pawn promotion");
+    }
+
+    private ArrayList<String> capture(ArrayList<String> list){
+        return list;
     }
 
 //    @TODO cannot throw exception here, and therefore the method fails to achieve it's goal
@@ -34,6 +39,15 @@ public class Pawn extends ChessPiece {
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
+        if (color == Color.BLACK){  // only need to check from up to down since pawn cannot move backward
+//            then need to check all the pieces all the way until reach the bottom
+            if (row == 7)   // reach the end of the row
+                promotion();
+        } else {    // only need to check from bottom to up since pawn cannot move backward}
+            if (row == 0)
+                promotion();
+        }
+        /*
 //        need to check 4 position for pawn
         try {
             String frontPosition = "" + (char) (column + 'a');   // the column is always the same, but row can be differed
@@ -60,6 +74,7 @@ public class Pawn extends ChessPiece {
         } catch (IllegalPositionException e) {
             System.out.println("Meeting edge case in Pawn' legalMoves method");
         }
+        */
 
         return res;
     }

@@ -11,6 +11,9 @@ import static Main.ChessPieces.ChessPiece.Color.BLACK;
 import static Main.ChessPieces.ChessPiece.Color.WHITE;
 import static org.junit.Assert.*;
 
+/**
+ * @author Lu Han
+ */
 public class PawnTest {
 
     @Before
@@ -33,6 +36,13 @@ public class PawnTest {
         Pawn pawn = new Pawn(board, BLACK);
         board.placePiece(pawn, "a7");
         assertEquals("a7", pawn.getPosition());
+//        Test with some edge cases
+        board.placePiece(pawn, "a10");
+        assertTrue(!"a10".equals(pawn.getPosition()));
+        board.placePiece(pawn, "a");
+        assertTrue(!"a".equals(pawn.getPosition()));
+        board.placePiece(pawn, "i8");
+        assertTrue(!"f8".equals(pawn.getPosition()));
     }
 
     @Test
@@ -50,5 +60,11 @@ public class PawnTest {
 
     @Test
     public void legalMoves() {
+        ChessBoard board = new ChessBoard();
+        Pawn pawnBlackA7 = new Pawn(board, BLACK);
+        board.placePiece(pawnBlackA7, "a7");
+        for (String str: pawnBlackA7.legalMoves()) {
+            System.out.println(str);
+        }
     }
 }

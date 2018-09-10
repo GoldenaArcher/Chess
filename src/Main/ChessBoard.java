@@ -9,9 +9,10 @@ import java.util.ArrayList;
  */
 public class ChessBoard {
     private ChessPiece[][] board;
-
+    private ArrayList<String> chessPieces;
     public ChessBoard() {
         board = new ChessPiece[8][8];
+        chessPieces = new ArrayList<>();
     }
 
 //    this is a helper function to implements the chess pieces on the board for initialization
@@ -20,20 +21,25 @@ public class ChessBoard {
             case 0:
             case 7:
                 placePiece(new Rook(this, color), position);
+                chessPieces.add(color + " ROOK");
                 break;
             case 1:
             case 6:
                 placePiece(new Knight(this, color), position);
+                chessPieces.add(color + " KNIGHT");
                 break;
             case 2:
             case 5:
                 placePiece(new Bishop(this, color), position);
+                chessPieces.add(color + " BISHOP");
                 break;
             case 4:
                 placePiece(new King(this, color), position);
+                chessPieces.add(color + " KING");
                 break;
             default:
                 placePiece(new Queen(this, color), position);
+                chessPieces.add(color + " QUEEN");
         }
     }
 
@@ -51,8 +57,10 @@ public class ChessBoard {
                     initializePieces(black, column, position);
                 } else if (row == 1) { // all X7 are the black pawns
                     placePiece(new Pawn(this, black), position);
+                    chessPieces.add(black + " PAWN");
                 } else if (row == 6) { // all X2 are the white pawns
                     placePiece(new Pawn(this, white), position);
+                    chessPieces.add(white + " PAWN");
                 } else if (row == 7) { // all the X1 are the white pieces
                     initializePieces(white, column, position);
                 }
