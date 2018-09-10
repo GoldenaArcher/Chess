@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 public class PawnTest {
 
     @Before
-    public void setUp(){
+    public void setUp() {
     }
 
     @Test
@@ -33,7 +33,7 @@ public class PawnTest {
     }
 
     @Test
-    public void getPosition(){
+    public void getPosition() {
         ChessBoard board = new ChessBoard();
         Pawn pawn = new Pawn(board, BLACK);
         board.placePiece(pawn, "a7");
@@ -60,7 +60,7 @@ public class PawnTest {
         }
     }
 
-//    No need to check the last row as promotion is not implemented yet
+    //    No need to check the last row as promotion is not implemented yet
 //    Black Pawn tests. Put a black pawn on A row, and check it's legal moves
     @Test
     public void legalMovesMostLeftBlack() {
@@ -84,7 +84,7 @@ public class PawnTest {
         assertTrue(pawnBlackA7.legalMoves().contains("b6") && pawnBlackA7.legalMoves().size() == 1);
     }
 
-//    Almost identical to previous test, but only put it on the H row
+    //    Almost identical to previous test, but only put it on the H row
     @Test
     public void legalMovesMostRightBlack() {
         ChessBoard board = new ChessBoard();
@@ -107,7 +107,7 @@ public class PawnTest {
         assertTrue(pawnBlackH7.legalMoves().contains("g6") && pawnBlackH7.legalMoves().size() == 1);
     }
 
-//    Need to check the middle column, mainly added new test to check maximum legal moves without special moves: 4
+    //    Need to check the middle column, mainly added new test to check maximum legal moves without special moves: 4
     @Test
     public void legalMovesMiddleBlack() {
         ChessBoard board = new ChessBoard();
@@ -134,5 +134,26 @@ public class PawnTest {
         assertTrue(pawnBlackE7.legalMoves().containsAll(Arrays.asList("f6", "d6")));
     }
 
-//    White Pawn Test. Put a black pawn on A row, and check it's legal moves
+    //    White Pawn Test. Put a black pawn on A row, and check it's legal moves
+    @Test
+    public void legalMovesMostLeftWhite() {
+        ChessBoard board = new ChessBoard();
+        Pawn whitePawnA2 = new Pawn(board, WHITE);
+        Pawn whitePawnA4 = new Pawn(board, WHITE);
+//        Set the black pawn on the board with it's initial position. In this case, A2 should have 2 valid moves
+        board.placePiece(whitePawnA2, "a2");
+        assertTrue(whitePawnA2.legalMoves().containsAll(Arrays.asList("a3", "a4")));
+//        Set another piece at A4, A2 should only have one valid move
+        board.placePiece(whitePawnA4, "a4");
+        assertTrue(whitePawnA2.legalMoves().contains("a3") && whitePawnA2.legalMoves().size() == 1);
+//        If there is a piece at A3, its only legal move is H4
+        assertTrue(whitePawnA4.legalMoves().contains("a5") && whitePawnA2.legalMoves().size() == 1);
+        //        Set another piece at h6, h7 should have no valid move
+        board.placePiece(whitePawnA4, "a3");
+        assertEquals(0, whitePawnA2.legalMoves().size());
+//        Set a different color piece at G6, H7 should have 1 valid move since it can capture G6
+        Pawn blackPawnB3 = new Pawn(board, BLACK);
+        board.placePiece(blackPawnB3, "b3");
+        assertTrue(whitePawnA2.legalMoves().contains("b3") && whitePawnA2.legalMoves().size() == 1);
+    }
 }

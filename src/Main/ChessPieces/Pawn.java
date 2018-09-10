@@ -52,34 +52,31 @@ public class Pawn extends ChessPiece {
         return res;
     }
 
-    //    @TODO cannot throw exception here, and therefore the method fails to achieve it's goal
     //    Pawns can move forward one square, if that square is unoccupied. If it has not yet moved, the pawn has the option of
 // moving two squares forward provided both squares in front of the pawn are unoccupied.
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
         try {
-            if (color == Color.BLACK && column < 8) {  // only need to check from up to down since pawn cannot move backward
-                String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 1);
+            int secondVal = color == Color.BLACK ? 7 - (row - '1') - 1 : 7 - (row - '1') + 1;
+            String position = "" + (char) (column + 'a') + (char) secondVal;
+            if (board.getPiece(position) == null)
+                res.add(position);
+//
+            if (row == 1 && color == Color.BLACK) {  // black pawn can move 2 steps of it's initial move
+                position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 2);
                 if (board.getPiece(position) == null)
                     res.add(position);
-                if (row == 1) {  // black pawn can move 2 steps of it's initial move
-                    position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 2);
-                    if (board.getPiece(position) == null)
-                        res.add(position);
-                }
-                res.addAll(capture(row + 1));
-            } else if (color == Color.WHITE && column > 0){    // only need to check from bottom to up since pawn cannot move backward}
-                String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 1);
-                if (board.getPiece(position) == null)
-                    res.add(position);
-                if (row == 6) {  // black pawn can move 2 steps of it's initial move
-                    position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 2);
-                    if (board.getPiece(position) == null)
-                        res.add(position);
-                }
-                res.addAll(capture(row - 1));
             }
+
+            if (row == 6 && color == Color.WHITE) {  // black pawn can move 2 steps of it's initial move
+                position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 2);
+                if (board.getPiece(position) == null)
+                    res.add(position);
+            }
+
+            res.addAll(capture(color == Color.BLACK ? row + 1 : row - 1));
+
         } catch (IllegalPositionException e) {
             System.out.println("Error case in the legalMove of the pawn, please come back and check");
         }

@@ -1,6 +1,5 @@
 package Test;
 
-import Main.ChessBoard;
 import Test.ChessPieces.PawnTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
