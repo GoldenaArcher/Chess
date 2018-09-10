@@ -21,7 +21,7 @@ public class Pawn extends ChessPiece {
     private void enPassant() {
     }
 
-//    @TODO needed to be implemented
+    //    @TODO needed to be implemented
     //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
 // rook, a bishop, or a knight, of the same colour as the pawn, at the player's choice and without taking into account
 // the other pieces still remaining on the chessboard. The effect of the promoted piece is immediate and permanent!
@@ -29,24 +29,61 @@ public class Pawn extends ChessPiece {
         System.out.println("Pawn promotion");
     }
 
-    private ArrayList<String> capture(ArrayList<String> list){
-        return list;
+    private ArrayList<String> capture(int row) {    // to check if there exists pieces can be captured diagonally
+        ArrayList<String> res = new ArrayList<>();
+        try {
+            if (column > 0) {   // check left
+                String position = "" + (char) (column + 'a' - 1) + (char) (7 - row + '1' + 1);
+                ChessPiece piece = board.getPiece(position);
+                if (piece != null && piece.getColor() != color)
+                    res.add(position);
+            }
+
+            if (column < 7) { // check right
+                String position = "" + (char) (column + 'a' + 1) + (char) (7 - row + '1' + 1);
+                ChessPiece piece = board.getPiece(position);
+                if (piece != null && piece.getColor() != color)
+                    res.add(position);
+            }
+        } catch (IllegalPositionException e) {
+            System.out.println("Error occurred at Pawn in capture");
+        }
+
+        return res;
     }
 
-//    @TODO cannot throw exception here, and therefore the method fails to achieve it's goal
+    //    @TODO cannot throw exception here, and therefore the method fails to achieve it's goal
     //    Pawns can move forward one square, if that square is unoccupied. If it has not yet moved, the pawn has the option of
 // moving two squares forward provided both squares in front of the pawn are unoccupied.
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
-        if (color == Color.BLACK){  // only need to check from up to down since pawn cannot move backward
-//            then need to check all the pieces all the way until reach the bottom
-            if (row == 7)   // reach the end of the row
-                promotion();
-        } else {    // only need to check from bottom to up since pawn cannot move backward}
-            if (row == 0)
-                promotion();
+        try {
+            if (color == Color.BLACK && column < 7) {  // only need to check from up to down since pawn cannot move backward
+                String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 1);
+                if (board.getPiece(position) == null)
+                    res.add(position);
+                if (column == 1) {  // black pawn can move 2 steps of it's initial move
+                    position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 2);
+                    if (board.getPiece(position) == null)
+                        res.add(position);
+                }
+                res.addAll(capture(row + 1));
+            } else if (color == Color.WHITE && column > 0){    // only need to check from bottom to up since pawn cannot move backward}
+                String position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 1);
+                if (board.getPiece(position) == null)
+                    res.add(position);
+                if (column == 6) {  // black pawn can move 2 steps of it's initial move
+                    position = "" + (char) (column + 'a') + (char) (7 - (row - '1') + 2);
+                    if (board.getPiece(position) == null)
+                        res.add(position);
+                }
+                res.addAll(capture(row - 1));
+            }
+        } catch (IllegalPositionException e) {
+            System.out.println("Error case in the legalMove of the pawn, please come back and check");
         }
+
         /*
 //        need to check 4 position for pawn
         try {

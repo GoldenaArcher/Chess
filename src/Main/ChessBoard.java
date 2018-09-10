@@ -9,10 +9,9 @@ import java.util.ArrayList;
  */
 public class ChessBoard {
     private ChessPiece[][] board;
-    private ArrayList<String> chessPieces;
+
     public ChessBoard() {
         board = new ChessPiece[8][8];
-        chessPieces = new ArrayList<>();
     }
 
 //    this is a helper function to implements the chess pieces on the board for initialization
@@ -21,25 +20,20 @@ public class ChessBoard {
             case 0:
             case 7:
                 placePiece(new Rook(this, color), position);
-                chessPieces.add(color + " ROOK");
                 break;
             case 1:
             case 6:
                 placePiece(new Knight(this, color), position);
-                chessPieces.add(color + " KNIGHT");
                 break;
             case 2:
             case 5:
                 placePiece(new Bishop(this, color), position);
-                chessPieces.add(color + " BISHOP");
                 break;
             case 4:
                 placePiece(new King(this, color), position);
-                chessPieces.add(color + " KING");
                 break;
             default:
                 placePiece(new Queen(this, color), position);
-                chessPieces.add(color + " QUEEN");
         }
     }
 
@@ -57,13 +51,10 @@ public class ChessBoard {
                     initializePieces(black, column, position);
                 } else if (row == 1) { // all X7 are the black pawns
                     placePiece(new Pawn(this, black), position);
-                    chessPieces.add(black + " PAWN");
                 } else if (row == 6) { // all X2 are the white pawns
                     placePiece(new Pawn(this, white), position);
-                    chessPieces.add(white + " PAWN");
-                } else if (row == 7) { // all the X1 are the white pieces
+                } else if (row == 7)  // all the X1 are the white pieces
                     initializePieces(white, column, position);
-                }
             }
         }
     }
@@ -83,9 +74,8 @@ public class ChessBoard {
 // an appropriate method in the ChessPiece class (i.e., setPosition) to set the piece's position
     public boolean placePiece(ChessPiece piece, String position){
 //        if the position that piece is going to be placed is not legal, just return false
-        if (!validPosition(position)) {
+        if (!validPosition(position))
             return false;
-        }
 
         int toLetter = position.charAt(0) - 'a';
         int toDigit = 7 - (position.charAt(1) - '1');
@@ -125,20 +115,18 @@ public class ChessBoard {
             fromPiece = getPiece(from);
             toPiece = getPiece(to);
         } catch (IllegalPositionException e) {
-            throw new IllegalMoveException("There is no piece you can move at " + from + " or " + to);
-        }
-
-        if (toPiece != null && toPiece.getColor() == fromPiece.getColor()) {
-            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces have the same color");
+            throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
         }
 
         ArrayList<String> legalMove = fromPiece.legalMoves();
-        if (!legalMove.contains("to")) {
-            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
-        }
 
-        placePiece(fromPiece, to);
-        board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
+        if (!legalMove.contains(to))
+            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
+
+        if (placePiece(fromPiece, to))  // if move is successful
+            board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
+        else
+            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces may be the same color");
     }
 
     public String toString() {
