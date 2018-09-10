@@ -137,7 +137,7 @@ public class ChessBoard {
                     if (board[i][j] != null) {
                         res += board[i][j] + "│";
                     } else {
-                        res += "  │";
+                        res += " │";
                     }
                 }
                 if (i == 7) {
