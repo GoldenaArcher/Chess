@@ -57,12 +57,12 @@ public class Pawn extends ChessPiece {
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
-        try {
+        try {   // black's index X7 -> X1 while white index Y2 -> Y8, so if black - 1 and white + 1
             int secondVal = color == Color.BLACK ? 7 - (row - '1') - 1 : 7 - (row - '1') + 1;
             String position = "" + (char) (column + 'a') + (char) secondVal;
             if (board.getPiece(position) == null)
                 res.add(position);
-//
+
             if (row == 1 && color == Color.BLACK) {  // black pawn can move 2 steps of it's initial move
                 position = "" + (char) (column + 'a') + (char) (7 - (row - '1') - 2);
                 if (board.getPiece(position) == null)
@@ -78,7 +78,9 @@ public class Pawn extends ChessPiece {
             res.addAll(capture(color == Color.BLACK ? row + 1 : row - 1));
 
         } catch (IllegalPositionException e) {
-            System.out.println("Error case in the legalMove of the pawn, please come back and check");
+            System.out.println("Error case in the legalMove of the pawn. Possible that white pieces is placed on X1 " +
+                    "and black piece is placed on X8. Please check other implementation of the corresponding method " +
+                    "which actually placed the pawn piece");
         }
 
         return res;
