@@ -1,6 +1,5 @@
 package Test.ChessPieces;
 
-import Main.Chess;
 import Main.ChessBoard;
 import Main.ChessPieces.Rook;
 import org.junit.Before;
@@ -172,5 +171,34 @@ public class RookTest {
     @Test
     public void testMiddle(){
         ChessBoard board = new ChessBoard();
+        Rook rookE4 = new Rook(board, WHITE);
+
+//        place a piece in the middle, and check all possible moves (all available moves are 14)
+        board.placePiece(rookE4, "e4");
+        assertTrue(rookE4.legalMoves().containsAll(Arrays.asList("e1", "e2", "e3", "e5", "e6", "e7", "e8",
+                "a4", "b4", "c4", "d4", "f4", "g4", "h4")));
+        assertEquals(14, rookE4.legalMoves().size());
+
+//        block both up and down with same color
+        Rook rookE2 = new Rook(board, WHITE);
+        board.placePiece(rookE2, "e2");
+        board.placePiece(rookE2, "e6");
+        assertTrue(rookE4.legalMoves().containsAll(Arrays.asList("e3", "e5",
+                "a4", "b4", "c4", "d4", "f4", "g4", "h4")));
+        assertEquals(9, rookE4.legalMoves().size());
+
+//        block both left and right with different color
+        Rook rookD4 = new Rook(board, BLACK);
+        board.placePiece(rookD4, "d4");
+        board.placePiece(rookD4, "f4");
+        assertTrue(rookE4.legalMoves().containsAll(Arrays.asList("e3", "e5","d4", "f4")));
+        assertEquals(4, rookE4.legalMoves().size());
+
+//        Now to block all the possible moves
+        board.placePiece(rookE2, "e3");
+        board.placePiece(rookE2, "e5");
+        board.placePiece(rookE2, "d4");
+        board.placePiece(rookE2, "f4");
+        assertEquals(0, rookE4.legalMoves().size());
     }
 }
