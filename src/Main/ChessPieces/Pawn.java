@@ -21,14 +21,6 @@ public class Pawn extends ChessPiece {
     private void enPassant() {
     }
 
-    //    @TODO needed to be implemented
-    //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
-// rook, a bishop, or a knight, of the same colour as the pawn, at the player's choice and without taking into account
-// the other pieces still remaining on the chessboard. The effect of the promoted piece is immediate and permanent!
-    private void promotion() {
-        System.out.println("Pawn promotion");
-    }
-
     private ArrayList<String> capture(int row) {    // to check if there exists pieces can be captured diagonally
         ArrayList<String> res = new ArrayList<>();
         try {
