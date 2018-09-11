@@ -30,14 +30,18 @@ public class Rook extends ChessPiece {
         else    return 2;               // if that piece's color is same
     }
 
-//    Given the incrementation, check all possible steps until meet the edge or another piece up or down
-    private ArrayList<String> upDown(int incrementation){
+//    Merge both methods(upDown & leftRight) to reduce repeated code
+//    The idea is simple, only need to check all the way to left, right, up, down. So pass 1 parameter for manipulation
+//    of column, 1 parameter for row. If check up, pass -1 for check up, -1 for down, +1 for right, -1 for left
+    private ArrayList<String> findLegalMoves(int rowIncrementation, int colIncrementation){
         ArrayList <String> res = new ArrayList<>();
-        int tempRow = row + incrementation;      // +1 moves from X8 -> X1, and -1 moves from X1 -> X8
+        int tempRow = row + rowIncrementation;      // +1 moves from X8 -> X1, and -1 moves from X1 -> X8
+        int tempCol = column + colIncrementation;   // +1 moves from AX -> HX, and -1 moves from HX -> AX
+
         String position;
 
-        while (tempRow < 8 && tempRow >= 0) {
-            position = "" + (char) (column + 'a') +  (7 - tempRow + 1);
+        while (tempRow < 8 && tempRow >= 0 && tempCol < 8 && tempCol >= 0) {
+            position = "" + (char) (tempCol + 'a') +  (7 - tempRow + 1);
             switch (positionCheck(position)){
                 default:    // case 0, position checked is null, add it and continue
                     res.add(position);
@@ -48,29 +52,8 @@ public class Rook extends ChessPiece {
                 case 2:     // no further legal position, direct return it
                     return res;
             }
-            tempRow += incrementation;
-        }
-        return res;
-    }
-
-    //    Given the incrementation, check all possible steps until meet the edge or another piece left or right
-    private ArrayList<String> leftRight(int incrementation){
-        ArrayList <String> res = new ArrayList<>();
-        int tempCol = column + incrementation;   // +1 moves from AX -> HX, and -1 moves from HX -> AX
-        String position;
-        while (tempCol < 8 && tempCol >= 0) {
-            position = "" + (char) (tempCol + 'a') + (7 - row + 1);
-            switch (positionCheck(position)){
-                default:    // case 0, position checked is null, add it and continue
-                    res.add(position);
-                    break;
-                case 1:     // position checked is not null, with different color. That position can be captured, and return res
-                    res.add(position);
-                    return res;
-                case 2:     // no further legal position, direct return it
-                    return res;
-            }
-            tempCol += incrementation;
+            tempRow += rowIncrementation;
+            tempCol += colIncrementation;
         }
         return res;
     }
@@ -83,10 +66,10 @@ public class Rook extends ChessPiece {
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList <String> res = new ArrayList<>();
-        res.addAll(upDown(1));  // check from X8 -> X1
-        res.addAll(upDown(-1)); // check from X1 -> X8
-        res.addAll(leftRight(+1));  // check from AX -> HX
-        res.addAll(leftRight(-1));  // check from HX -> AX
+        res.addAll(findLegalMoves(1, 0));  // check from X8 -> X1
+        res.addAll(findLegalMoves(-1, 0)); // check from X1 -> X8
+        res.addAll(findLegalMoves(0,1));  // check from AX -> HX
+        res.addAll(findLegalMoves(0,-1));  // check from HX -> AX
         return res;
     }
 
