@@ -28,6 +28,7 @@ public class ChessBoardTest {
         assertTrue(chessBoard.placePiece(rookWhite, "a3"));
         assertTrue(!chessBoard.placePiece(rookWhite, "3"));
         assertTrue(!chessBoard.placePiece(rookWhite, "G10"));
+        assertFalse(chessBoard.placePiece(rookWhite, "A10"));
     }
 
 //    in this case, all passed parameters are valid, so there should not be a test that fails

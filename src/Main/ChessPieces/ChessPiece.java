@@ -19,6 +19,8 @@ public abstract class ChessPiece {
     public ChessPiece(ChessBoard board, Color color) {
         this.board = board;
         this.color = color;
+        this.column = -1;
+        this.row = -1;
     }
 
     //    This method returns the color of the piece. There is no need for a setColor method because a piece cannot change color.

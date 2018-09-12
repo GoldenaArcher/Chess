@@ -28,7 +28,7 @@ public class PawnTest {
         Pawn pawnWhite = new Pawn(board, WHITE);
 
         assertEquals(BLACK, pawnBlack.getColor());
-        assertEquals(ChessPiece.Color.WHITE, pawnWhite.getColor());
+        assertEquals(WHITE, pawnWhite.getColor());
     }
 
     @Test
@@ -289,6 +289,17 @@ public class PawnTest {
         assertEquals(0, whitePawnA8.legalMoves().size());
 
         board.placePiece(blackPawnA1, "e8");
+        assertEquals(0, whitePawnA8.legalMoves().size());
+
+//        These should throw exception but not fail the program
+        Pawn newPawn = new Pawn(board, BLACK);
+        board.placePiece(newPawn, "A10");
+        assertEquals(0, whitePawnA8.legalMoves().size());
+        board.placePiece(newPawn, "A9");
+        assertEquals(0, whitePawnA8.legalMoves().size());
+        board.placePiece(newPawn, "a9");
+        assertEquals(0, whitePawnA8.legalMoves().size());
+        board.placePiece(newPawn, "k2");
         assertEquals(0, whitePawnA8.legalMoves().size());
     }
 }

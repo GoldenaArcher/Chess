@@ -2,6 +2,7 @@ package Test.ChessPieces;
 
 import Main.ChessBoard;
 import Main.ChessPieces.Rook;
+import Main.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +15,44 @@ import static Main.ChessPieces.ChessPiece.Color.WHITE;
 public class RookTest {
     @Before
     public void setUp() {
+    }
+
+    @Test
+    public void getColor() {
+        ChessBoard board = new ChessBoard();
+        Rook rookBlack = new Rook(board, BLACK);
+        Rook rookWhite = new Rook(board, WHITE);
+
+        assertEquals(BLACK, rookBlack.getColor());
+        assertEquals(WHITE, rookWhite.getColor());
+    }
+
+    @Test
+    public void getPosition() {
+        ChessBoard board = new ChessBoard();
+        Rook rook = new Rook(board, BLACK);
+        board.placePiece(rook, "a7");
+        assertEquals("a7", rook.getPosition());
+//        Test with some edge cases
+        board.placePiece(rook, "a10");
+        assertTrue(!"a10".equals(rook.getPosition()));
+        board.placePiece(rook, "a");
+        assertTrue(!"a".equals(rook.getPosition()));
+        board.placePiece(rook, "i8");
+        assertTrue(!"f8".equals(rook.getPosition()));
+    }
+
+    @Test
+    public void setPosition() {
+        ChessBoard localBoard = new ChessBoard();
+        Rook localRook = new Rook(localBoard, BLACK);
+
+        try {
+            localRook.setPosition("a7");
+            assertEquals(localRook.getPosition(), "a7");
+        } catch (IllegalPositionException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -200,5 +239,22 @@ public class RookTest {
         board.placePiece(rookE2, "d4");
         board.placePiece(rookE2, "f4");
         assertEquals(0, rookE4.legalMoves().size());
+    }
+
+//    Exception test, should not have any result, throw a bunch of exceptions, but not terminate
+    @Test
+    public void testEdges() {
+        ChessBoard board = new ChessBoard();
+        Rook rookEdge = new Rook(board, BLACK);
+        board.placePiece(rookEdge, "A10");
+        assertEquals(0, rookEdge.legalMoves().size());
+        board.placePiece(rookEdge, "A9");
+        assertEquals(0, rookEdge.legalMoves().size());
+        board.placePiece(rookEdge, "a9");
+        assertEquals(0, rookEdge.legalMoves().size());
+        board.placePiece(rookEdge, "h9");
+        assertEquals(0, rookEdge.legalMoves().size());
+        board.placePiece(rookEdge, "G9");
+        assertEquals(0, rookEdge.legalMoves().size());
     }
 }
