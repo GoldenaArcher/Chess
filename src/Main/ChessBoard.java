@@ -129,30 +129,6 @@ public class ChessBoard {
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces may be the same color");
     }
 
-//    @TODO needed to be implemented
-    //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
-// rook, a bishop, or a knight, of the same colour as the pawn, at the player's choice and without taking into account
-// the other pieces still remaining on the chessboard. The effect of the promoted piece is immediate and permanent!
-    private void pawnPromotion(){}
-
-    /*
-Once during a game, a player may move his King two squares to the right or left and move the Rook on that side (the
-Rook toward which the King moved) over the King to the square adjacent to the King.
-
-There are five conditions that must be met in order to castle:
-
-The squares between the King and the Rook used for castling must be empty. You can’t castle over your own or enemy pieces!
-The King may not castle into or through check. If the King would be in check at the end of the castling move, or if the
-square that the King passes over is guarded by an enemy piece, then castling is not allowed.
-The King may not castle out of check.
-The King may not have made a previous move. If the King has moved (even if it subsequently moved back to its home square),
-castling is not permitted.
-If one of the Rooks has moved, castling is prohibited with that Rook. Castling would still be permitted with the other Rook,
-provided it has not moved and the other conditions are met.s
- */
-//    TODO needed to be implemented
-    private void castling() {}
-
     public String toString() {
             String res = "┌─┬─┬─┬─┬─┬─┬─┬─┐\n";
             for (int i = 0; i < 8; i++) {

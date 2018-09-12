@@ -13,6 +13,13 @@ public class Pawn extends ChessPiece {
         super(board, color);
     }
 
+
+    //    @TODO needed to be implemented
+    //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
+// rook, a bishop, or a knight, of the same colour as the pawn, at the player's choice and without taking into account
+// the other pieces still remaining on the chessboard. The effect of the promoted piece is immediate and permanent!
+    private void pawnPromotion(){}
+
     //    @TODO implement En Passant after getting stack to work of recording all the movement
 //    special moves are En Passant and Pawn promotion
 //    A pawn, attacking a square crossed by an opponent's pawn which has [just] been advanced two squares in one move from
