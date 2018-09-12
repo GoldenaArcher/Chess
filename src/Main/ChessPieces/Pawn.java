@@ -57,6 +57,25 @@ public class Pawn extends ChessPiece {
         return res;
     }
 
+//    need to override this since the pawn can only move its piece when that position is null
+    @Override
+    String validMove(int rowIncrementation, int colIncrementation){
+        int tempRow = row + rowIncrementation, tempCol = column + colIncrementation;
+        if (tempCol <8 && tempCol >= 0 && tempRow < 8 && tempRow >= 0) {
+            String position = "" + (char) (tempCol + 'a') +  (7 - tempRow + 1);
+            ChessPiece piece = null;
+            try {
+                piece = board.getPiece(position);
+            } catch (IllegalPositionException e) {
+                System.out.println("error occurred in position check, please come back and check the error");
+            }
+            if (piece == null) {
+                return position;
+            }
+        }
+        return null;
+    }
+
     //    Pawns can move forward one square, if that square is unoccupied. If it has not yet moved, the pawn has the option of
 // moving two squares forward provided both squares in front of the pawn are unoccupied.
     @Override
