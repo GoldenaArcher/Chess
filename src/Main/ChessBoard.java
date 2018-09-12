@@ -60,12 +60,7 @@ public class ChessBoard {
     }
 
     private boolean validPosition(String position){
-        if (position.length() != 2)
-            return false;
-
-        int letter = position.charAt(0) - 'a';
-        int digit = position.charAt(1) - '1';
-        return letter <= 7 && letter >= 0 && digit >= 0 && digit <= 7;
+        return position.matches("^[a-h][1-8]$");
     }
 
 //    This method tries to place the given piece at a given position, and returns true if successful, and false if there is

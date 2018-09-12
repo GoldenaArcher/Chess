@@ -59,7 +59,6 @@ public class PawnTest {
         }
     }
 
-    //    No need to check the last row as promotion is not implemented yet
 //    Black Pawn tests. Put a black pawn on A row, and check it's legal moves
     @Test
     public void legalMovesMostLeftBlack() {
@@ -302,4 +301,6 @@ public class PawnTest {
         board.placePiece(newPawn, "k2");
         assertEquals(0, whitePawnA8.legalMoves().size());
     }
+
+//    @TODO check castling later
 }
