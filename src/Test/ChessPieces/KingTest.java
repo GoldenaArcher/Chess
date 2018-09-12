@@ -83,4 +83,8 @@ public class KingTest {
 
     @Test
     public void legalMoveMiddle() {}
+
+//    intend to throw a bunch of error messages but not to fail the program
+    @Test
+    public void edgeCase(){}
 }
