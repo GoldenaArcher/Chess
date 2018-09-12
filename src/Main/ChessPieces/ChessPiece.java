@@ -44,6 +44,24 @@ public abstract class ChessPiece {
         column = letter;
     }
 
+//    for now, applicable for King and Knight, so added as a protected methods for at least King and Pawn to access
+    String validMove(int rowIncrementation, int colIncrementation){
+        int tempRow = row + rowIncrementation, tempCol = column + colIncrementation;
+        if (tempCol <8 && tempCol >= 0 && tempRow < 8 && tempRow >= 0) {
+            String position = "" + (char) (tempCol + 'a') +  (7 - tempRow + 1);
+            ChessPiece piece = null;
+            try {
+                piece = board.getPiece(position);
+            } catch (IllegalPositionException e) {
+                System.out.println("error occurred in position check, please come back and check the error");
+            }
+            if (piece == null || piece.getColor() != color) {
+                return position;
+            }
+        }
+        return null;
+    }
+
     abstract public ArrayList<String> legalMoves();
 
     abstract public String toString();

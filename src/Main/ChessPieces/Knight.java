@@ -1,8 +1,10 @@
 package Main.ChessPieces;
 
 import Main.ChessBoard;
+import Main.IllegalPositionException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Lu Han
@@ -19,6 +21,10 @@ public class Knight extends  ChessPiece{
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
+
+//        test for valid move
+
+        res.removeAll(Collections.singleton(null));
         return res;
     }
 
