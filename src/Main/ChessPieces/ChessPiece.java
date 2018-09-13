@@ -23,6 +23,12 @@ public abstract class ChessPiece {
         this.row = -1;
     }
 
+//    used by Bishop and Queen
+    void resetRowCol(int row, int col) {
+        this.row = row;
+        this.column = col;
+    }
+
     //    This method returns the color of the piece. There is no need for a setColor method because a piece cannot change color.
     public Color getColor() {
         return color;

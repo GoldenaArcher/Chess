@@ -1,9 +1,6 @@
 package Main.ChessPieces;
-
 import Main.ChessBoard;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * @author Lu Han
@@ -11,15 +8,6 @@ import java.util.Collections;
 public class Bishop extends  ChessPiece{
     public Bishop (ChessBoard board, Color color) {
         super(board, color);
-    }
-
-    private ArrayList<String> allValidMove(int rowIncrementation, int colIncrementation){
-        ArrayList<String> res = new ArrayList<>();
-        int tempRow = row, tempCol = column;
-
-        row = tempRow;
-        column = tempCol;
-        return res;
     }
 
         /*
@@ -45,19 +33,39 @@ public class Bishop extends  ChessPiece{
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
-
         int tempRow = row, tempCol = column;
-//        move to left&up
-        while ((tempCol -= 1) >= 0 && (tempRow -= 1) >= 0){
-            res.addAll(allValidMove(-1,-1));
-        }
 
-        tempRow = row;
-        tempCol = column;
-//        move to right up
-        while ((tempCol -= 1) >= 0 && (tempRow -= 1) >= 0){
-            res.addAll(allValidMove(-1,1));
+        //        move to left&up
+        while (row > 0 && column > 0){
+            res.add(validMove(-1, -1));
+            row -= 1;
+            column -= 1;
         }
+        resetRowCol(tempRow, tempCol);
+
+//        move to left down
+        while (row < 7 && column > 0) {
+            res.add(validMove(1, -1));
+            row += 1;
+            column -= 1;
+        }
+        resetRowCol(tempRow, tempCol);
+
+//        move to right up
+        while (row > 0 && column < 7) {
+            res.add(validMove(-1, 1));
+            row -= 1;
+            column += 1;
+        }
+        resetRowCol(tempRow, tempCol);
+
+//        move to right down
+        while (row < 7 && column < 7) {
+            res.add(validMove(1, 1));
+            row += 1;
+            column += 1;
+        }
+        resetRowCol(tempRow, tempCol);
         return res;
     }
 
