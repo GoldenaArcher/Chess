@@ -17,12 +17,36 @@ public class Knight extends  ChessPiece{
     /*
     Knight can move one square along any rank or file and then at an angle. The knight´s movement can also be viewed as
     an “L” or “7″ laid out at any horizontal or vertical angle.
+    ┌─┬─┬─┬─┬─┬─┬─┬─┐
+    │  │  │  │  │  │  │  │  │
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │  │  │  │×│  │×│  │  │
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │  │  │×│  │  │  │×│  │
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │  │  │  │  │♞│  │  │  │
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │  │  │×│  │  │  │×│  │
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │  │  │  │×│  │×│  │  │
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │♙│♙│♙│♙│♙│♙│♙│♙│
+    ├─┼─┼─┼─┼─┼─┼─┼─┤
+    │♖│♘│♗│♕│♔│♗│♘│♖│
+    └───────────────┘
      */
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
-
-//        test for valid move
+//        test for valid move, a knight should have maximum of 8 possible positions to move
+        res.add(validMove(1,2));
+        res.add(validMove(-1,2));
+        res.add(validMove(2,1));
+        res.add(validMove(-2,1));
+        res.add(validMove(1,-2));
+        res.add(validMove(-1,-2));
+        res.add(validMove(2,-1));
+        res.add(validMove(-2,-1));
 
         res.removeAll(Collections.singleton(null));
         return res;

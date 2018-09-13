@@ -107,11 +107,14 @@ public class ChessBoard {
         ChessPiece fromPiece, toPiece;
 
         try {
-            fromPiece = getPiece(from);
-            toPiece = getPiece(to);
-        } catch (IllegalPositionException e) {
-            throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
+                fromPiece = getPiece(from);
+                toPiece = getPiece(to);
+            } catch (IllegalPositionException e) {
+                throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
         }
+
+        if (fromPiece == null)
+            throw new IllegalMoveException(from + " dees not have any chess piece on it");
 
         ArrayList<String> legalMove = fromPiece.legalMoves();
 
@@ -125,23 +128,23 @@ public class ChessBoard {
     }
 
     public String toString() {
-            String res = "┌─┬─┬─┬─┬─┬─┬─┬─┐\n";
+            StringBuilder res = new StringBuilder(" ┌─┬─┬─┬─┬─┬─┬─┬─┐\n");
             for (int i = 0; i < 8; i++) {
-                res += "│";
+                res.append(8-i).append("│");
                 for (int j = 0; j < 8; j++) {
                     if (board[i][j] != null) {
-                        res += board[i][j] + "│";
+                        res.append(board[i][j]).append("│");
                     } else {
-                        res += " │";
+                        res.append("  │");
                     }
                 }
                 if (i == 7) {
-                    res += "\n└───────────────┘";
+                    res.append("\n └───────────────┘");
+                    res.append("\n   a   b   c   d   e   f   g   h");
                     break;
                 }
-
-                res += "\n├─┼─┼─┼─┼─┼─┼─┼─┤\n";
+                res.append("\n ├─┼─┼─┼─┼─┼─┼─┼─┤\n");
             }
-        return res;
+        return res.toString();
     }
 }

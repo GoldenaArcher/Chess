@@ -6,6 +6,8 @@ import Main.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static Main.ChessPieces.ChessPiece.Color.BLACK;
 import static Main.ChessPieces.ChessPiece.Color.WHITE;
 import static org.junit.Assert.*;
@@ -57,5 +59,13 @@ public class KnightTest {
     }
 
 //    @TODO test knight's legal moves
+//    need to test three pieces at top
+    @Test
+    public void legalMovesTop() {
+        ChessBoard board = new ChessBoard();
+        Knight knightA8 = new Knight(board, BLACK);
+        board.placePiece(knightA8, "a8");
+
+    }
 
 }
