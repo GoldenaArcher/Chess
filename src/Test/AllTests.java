@@ -1,8 +1,7 @@
 package Test;
 
-import Test.ChessPieces.KingTest;
-import Test.ChessPieces.PawnTest;
-import Test.ChessPieces.RookTest;
+import Main.ChessPieces.Queen;
+import Test.ChessPieces.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import junit.framework.JUnit4TestAdapter;
@@ -14,6 +13,8 @@ import junit.framework.JUnit4TestAdapter;
         PawnTest.class,
         RookTest.class,
         KingTest.class,
+        BishopTest.class,
+        QueenTest.class,
 })
 
 public class AllTests {
