@@ -57,6 +57,16 @@ public class KingTest {
         }
     }
 
+    @Test (expected = IllegalPositionException.class)
+    public void setPositionIllegal() throws IllegalPositionException {
+        ChessBoard localBoard = new ChessBoard();
+        King king = new King(localBoard, BLACK);
+        king.setPosition("a10");
+        king.setPosition("a0");
+        king.setPosition("B1");
+        king.setPosition("i0");
+    }
+
     @Test
     public void legalMovesLeftTop() {
         ChessBoard board = new ChessBoard();

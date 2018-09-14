@@ -44,7 +44,7 @@ public abstract class ChessPiece {
     public void setPosition(String position) throws IllegalPositionException {
         int letter = position.charAt(0) - 'a';
         int digit = 7 - (position.charAt(1) - '1');
-        if (letter > 7 || letter < 0 || digit < 0 || digit > 7)
+        if (!position.matches("^[a-h][1-8]$"))
             throw new IllegalPositionException("Position is illegal, it must be between a1 to h8");
         row = digit;
         column = letter;

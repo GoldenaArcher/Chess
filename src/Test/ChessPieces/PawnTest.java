@@ -59,6 +59,16 @@ public class PawnTest {
         }
     }
 
+    @Test (expected = IllegalPositionException.class)
+    public void setPositionIllegal() throws IllegalPositionException {
+        ChessBoard localBoard = new ChessBoard();
+        Pawn pawn = new Pawn(localBoard, BLACK);
+        pawn.setPosition("a10");
+        pawn.setPosition("a0");
+        pawn.setPosition("B1");
+        pawn.setPosition("i0");
+    }
+
 //    Black Pawn tests. Put a black pawn on A row, and check it's legal moves
     @Test
     public void legalMovesMostLeftBlack() {
