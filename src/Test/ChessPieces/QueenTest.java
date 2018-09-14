@@ -96,7 +96,27 @@ public class QueenTest {
     }
 
     @Test
-    public void legalMoveBottomRight() {}
+    public void legalMoveBottomRight() {
+        ChessBoard board = new ChessBoard();
+        Queen queenH1 = new Queen(board, WHITE);
+        //        find all the pieces on column 'h' but itself, all the pieces on row '1' but itself, and the diagonal from a8-h1
+        board.placePiece(queenH1, "h1");
+        String[] resH1 = {"h8", "h7", "h6", "h5", "h4", "h3", "h2",  // same col
+                "a1", "b1", "c1", "d1", "e1", "f1", "g1",   // same row
+                "a8", "b7", "c6", "d5", "e4", "f3", "g2"};  // diagonal
+        assertEquals(queenH1.legalMoves().size(), resH1.length);
+        assertTrue(queenH1.legalMoves().containsAll(Arrays.asList(resH1)));
+
+        //        place 3 pieces to block some movements, now just put different color
+        Queen queenBlock = new Queen(board, BLACK);
+        board.placePiece(queenBlock, "d5");
+        board.placePiece(queenBlock, "e1");
+        board.placePiece(queenBlock, "h2");
+        String[] resA82 = {"g2", "f3", "e4", "d5", "e1", "f1", "g1", "h2"};
+        assertEquals(resA82.length, queenH1.legalMoves().size());
+        assertTrue(queenH1.legalMoves().containsAll(Arrays.asList(resA82)));
+
+    }
 
     @Test
     public void legalMovesMiddle() {
