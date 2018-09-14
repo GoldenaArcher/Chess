@@ -35,6 +35,9 @@ public class Bishop extends  ChessPiece{
         ArrayList<String> res = new ArrayList<>();
         int tempRow = row, tempCol = column;
 
+        if (!getPosition().matches("^[a-h][1-8]$"))
+            return res;
+
         //        move to left&up
         while (row > 0 && column > 0){
             res.add(validMove(-1, -1));

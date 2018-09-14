@@ -37,6 +37,10 @@ provided it has not moved and the other conditions are met.s
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
+
+        if (!getPosition().matches("^[a-h][1-8]$"))
+            return res;
+
 //        find all valid move
         res.add(validMove(1,0));
         res.add(validMove(-1,0));

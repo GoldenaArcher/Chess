@@ -8,7 +8,7 @@ import junit.framework.JUnit4TestAdapter;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestChess.class,
+//        TestChess.class,
         ChessBoardTest.class,
         PawnTest.class,
         RookTest.class,

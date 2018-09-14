@@ -66,6 +66,10 @@ public class Rook extends ChessPiece {
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList <String> res = new ArrayList<>();
+
+        if (!getPosition().matches("^[a-h][1-8]$"))
+            return res;
+
         res.addAll(findLegalMoves(1, 0));  // check from X8 -> X1
         res.addAll(findLegalMoves(-1, 0)); // check from X1 -> X8
         res.addAll(findLegalMoves(0,1));  // check from AX -> HX

@@ -38,6 +38,10 @@ public class Knight extends  ChessPiece{
     @Override
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
+
+        if (!getPosition().matches("^[a-h][1-8]$"))
+            return res;
+
 //        test for valid move, a knight should have maximum of 8 possible positions to move
         res.add(validMove(1,2));
         res.add(validMove(-1,2));

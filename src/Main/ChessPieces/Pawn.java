@@ -82,6 +82,9 @@ public class Pawn extends ChessPiece {
     public ArrayList<String> legalMoves() {
         ArrayList<String> res = new ArrayList<>();
 
+        if (!getPosition().matches("^[a-h][1-8]$"))
+            return res;
+
 //        Add the position in the front
         int rowImplementation = color == Color.BLACK ? 1 : -1;
         res.add(validMove(rowImplementation,0 ));
