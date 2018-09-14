@@ -60,14 +60,14 @@ public class Queen extends ChessPiece {
         resetRowCol(tempRow, tempCol);
 
 //        move to right
-        while (column < 7) {
+        while (column < 7 && column >= 0) {
             res.add(validMove(0, 1));
             column += 1;
         }
         resetRowCol(tempRow, tempCol);
 
 //        move to right down
-        while (row < 7 && column < 7) {
+        while (row < 7 && column < 7 && row >= 0 && column >= 0) {
             res.add(validMove(1, 1));
             row += 1;
             column += 1;
@@ -75,7 +75,7 @@ public class Queen extends ChessPiece {
         resetRowCol(tempRow, tempCol);
 
 //        move to down
-        while (row < 7) {
+        while (row < 7 && row >= 0) {
             res.add(validMove(1, 0));
             row += 1;
         }

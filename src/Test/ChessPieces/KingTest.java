@@ -159,4 +159,6 @@ public class KingTest {
         assertFalse(board.placePiece(king, "l1"));
         assertFalse(board.placePiece(king, "9a"));
     }
+
+    //    @TODO check castling later
 }

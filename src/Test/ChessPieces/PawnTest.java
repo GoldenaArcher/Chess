@@ -312,5 +312,6 @@ public class PawnTest {
         assertEquals(0, whitePawnA8.legalMoves().size());
     }
 
-//    @TODO check castling later
+//    @TODO check pawn promotion later
+//    @TODO check En Passant later
 }

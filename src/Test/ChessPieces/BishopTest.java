@@ -2,6 +2,7 @@ package Test.ChessPieces;
 
 import Main.ChessBoard;
 import Main.ChessPieces.Bishop;
+import Main.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,6 +24,29 @@ public class BishopTest {
 
     @Test
     public void getPosition() {
+    }
+
+    @Test
+    public void setPosition(){
+        ChessBoard localBoard = new ChessBoard();
+        Bishop bishop = new Bishop(localBoard, BLACK);
+
+        try {
+            bishop.setPosition("a7");
+            assertEquals(bishop.getPosition(), "a7");
+        } catch (IllegalPositionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test (expected = IllegalPositionException.class)
+    public void setPositionIllegal() throws IllegalPositionException {
+        ChessBoard localBoard = new ChessBoard();
+        Bishop bishop = new Bishop(localBoard, BLACK);
+        bishop.setPosition("a10");
+        bishop.setPosition("a0");
+        bishop.setPosition("B1");
+        bishop.setPosition("i0");
     }
 
     @Test

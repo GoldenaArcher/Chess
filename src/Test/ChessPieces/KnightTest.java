@@ -58,6 +58,16 @@ public class KnightTest {
         }
     }
 
+    @Test (expected = IllegalPositionException.class)
+    public void setPositionIllegal() throws IllegalPositionException {
+        ChessBoard localBoard = new ChessBoard();
+        Knight knight = new Knight(localBoard, BLACK);
+        knight.setPosition("a10");
+        knight.setPosition("a0");
+        knight.setPosition("B1");
+        knight.setPosition("i0");
+    }
+
 //    @TODO test knight's legal moves
 //    need to test three pieces at top
     @Test
