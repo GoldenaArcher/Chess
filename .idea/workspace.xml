@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d74485b-b0a7-48af-ad48-4756d941ffe7" name="Default" comment="finish test class for knight&#10;close issue #7&#10;close issue #6">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Test/AllTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Test/AllTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Test/ChessPieces/BishopTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Test/ChessPieces/BishopTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Test/ChessPieces/KnightTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Test/ChessPieces/KnightTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/Rook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/AllTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/AllTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/ChessPieces/BishopTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/ChessPieces/BishopTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -68,7 +60,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="3" />
-          <entry key="java" value="230" />
+          <entry key="java" value="232" />
           <entry key="log" value="1" />
           <entry key="md" value="2" />
         </counts>
@@ -76,7 +68,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="3" />
-          <entry key="JAVA" value="230" />
+          <entry key="JAVA" value="232" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
@@ -84,14 +76,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="20" />
-          <entry key="java" value="32624" />
+          <entry key="java" value="33827" />
           <entry key="md" value="294" />
           <entry key="txt" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="32624" />
+          <entry key="JAVA" value="33827" />
           <entry key="Markdown" value="294" />
           <entry key="PLAIN_TEXT" value="79" />
         </counts>
@@ -100,29 +92,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/BishopTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+            <state relative-caret-position="340">
+              <caret line="140" column="25" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getColor#0;class#BishopTest#0" />
                 <element signature="method#getPosition#0;class#BishopTest#0" />
                 <element signature="method#setPosition#0;class#BishopTest#0" />
                 <element signature="method#setPositionIllegal#0;class#BishopTest#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="16" column="124" selection-start-line="16" selection-start-column="124" selection-end-line="16" selection-end-column="124" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#legalMoves#0;class#Bishop#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/QueenTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="184" column="5" lean-forward="true" selection-start-line="169" selection-start-column="4" selection-end-line="184" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getColor#0;class#QueenTest#0" />
+                <element signature="method#getPosition#0;class#QueenTest#0" />
+                <element signature="method#setPosition#0;class#QueenTest#0" />
+                <element signature="method#setPositionIllegal#0;class#QueenTest#0" />
+                <element signature="method#legalMoveUpLeft#0;class#QueenTest#0" />
+                <element signature="method#legalMoveBottomRight#0;class#QueenTest#0" />
+                <element signature="method#legalMovesMiddle#0;class#QueenTest#0" />
               </folding>
             </state>
           </provider>
@@ -204,16 +216,16 @@
         <option value="$PROJECT_DIR$/src/Test/ChessPieces/RookTest.java" />
         <option value="$PROJECT_DIR$/src/Test/ChessPieces/KingTest.java" />
         <option value="$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java" />
-        <option value="$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java" />
         <option value="$PROJECT_DIR$/src/Test/ChessPieces/QueenTest.java" />
         <option value="$PROJECT_DIR$/src/Test/ChessPieces/KnightTest.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/Rook.java" />
         <option value="$PROJECT_DIR$/src/Test/AllTests.java" />
-        <option value="$PROJECT_DIR$/src/Test/ChessPieces/BishopTest.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/Queen.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/King.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/Knight.java" />
+        <option value="$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java" />
+        <option value="$PROJECT_DIR$/src/Test/ChessPieces/BishopTest.java" />
       </list>
     </option>
   </component>
@@ -291,7 +303,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/assignment/Chess/src/Main/ChessPieces/Rook.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537026831010" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537032659930" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -328,7 +340,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BishopTest.legalMoves1">
+  <component name="RunManager" selected="JUnit.BishopTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -341,7 +353,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BishopTest.legalMoves1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BishopTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Chess" />
       <extension name="coverage">
         <pattern>
@@ -351,14 +363,29 @@
       </extension>
       <option name="PACKAGE_NAME" value="Test.ChessPieces" />
       <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.BishopTest" />
-      <option name="METHOD_NAME" value="legalMoves1" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BishopTest.legalMoveLeftRight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.ChessPieces.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test.ChessPieces" />
+      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.BishopTest" />
+      <option name="METHOD_NAME" value="legalMoveLeftRight" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BishopTest.legalMoveLeftUp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Chess" />
       <extension name="coverage">
         <pattern>
@@ -367,30 +394,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Test.ChessPieces" />
-      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.KingTest" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="KnightTest.legalMiddle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Chess" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.ChessPieces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test.ChessPieces" />
-      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.KnightTest" />
-      <option name="METHOD_NAME" value="legalMiddle" />
+      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.BishopTest" />
+      <option name="METHOD_NAME" value="legalMoveLeftUp" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KnightTest.legalMoveBottomRight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BishopTest.legalMoveRightDown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Chess" />
       <extension name="coverage">
         <pattern>
@@ -399,15 +411,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Test.ChessPieces" />
-      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.KnightTest" />
-      <option name="METHOD_NAME" value="legalMoveBottomRight" />
+      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.BishopTest" />
+      <option name="METHOD_NAME" value="legalMoveRightDown" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KnightTest.testEdges" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BishopTest.legalMovesMiddle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Chess" />
       <extension name="coverage">
         <pattern>
@@ -416,8 +428,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Test.ChessPieces" />
-      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.KnightTest" />
-      <option name="METHOD_NAME" value="testEdges" />
+      <option name="MAIN_CLASS_NAME" value="Test.ChessPieces.BishopTest" />
+      <option name="METHOD_NAME" value="legalMovesMiddle" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -466,19 +478,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.RunAllTests" />
-      <item itemvalue="JUnit.KnightTest.legalMoveBottomRight" />
-      <item itemvalue="JUnit.KnightTest.legalMiddle" />
-      <item itemvalue="JUnit.KnightTest.testEdges" />
-      <item itemvalue="JUnit.KingTest" />
-      <item itemvalue="JUnit.BishopTest.legalMoves1" />
+      <item itemvalue="JUnit.BishopTest.legalMoveLeftRight" />
+      <item itemvalue="JUnit.BishopTest.legalMoveLeftUp" />
+      <item itemvalue="JUnit.BishopTest.legalMoveRightDown" />
+      <item itemvalue="JUnit.BishopTest.legalMovesMiddle" />
+      <item itemvalue="JUnit.BishopTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BishopTest.legalMoves1" />
-        <item itemvalue="JUnit.KingTest" />
-        <item itemvalue="JUnit.KnightTest.testEdges" />
-        <item itemvalue="JUnit.KnightTest.legalMiddle" />
-        <item itemvalue="JUnit.KnightTest.legalMoveBottomRight" />
+        <item itemvalue="JUnit.BishopTest" />
+        <item itemvalue="JUnit.BishopTest.legalMovesMiddle" />
+        <item itemvalue="JUnit.BishopTest.legalMoveRightDown" />
+        <item itemvalue="JUnit.BishopTest.legalMoveLeftUp" />
+        <item itemvalue="JUnit.BishopTest.legalMoveLeftRight" />
       </list>
     </recent_temporary>
   </component>
@@ -496,7 +508,7 @@
       <workItem from="1536333621159" duration="694000" />
       <workItem from="1536335632347" duration="17562000" />
       <workItem from="1536430093278" duration="118622000" />
-      <workItem from="1536905038360" duration="20824000" />
+      <workItem from="1536905038360" duration="23943000" />
     </task>
     <task id="LOCAL-00001" summary="finish test class for knight&#10;close issue #7&#10;close issue #6">
       <created>1537024087300</created>
@@ -509,39 +521,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="KnightTest_legalMiddle - 2018.09.15 at 08h 49m 37s.xml">
-      <configuration name="KnightTest.legalMiddle" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KnightTest_legalMiddle - 2018.09.15 at 08h 56m 08s.xml">
-      <configuration name="KnightTest.legalMiddle" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KnightTest_testEdges - 2018.09.15 at 08h 56m 56s.xml">
-      <configuration name="KnightTest.testEdges" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2018.09.15 at 09h 04m 16s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2018.09.15 at 09h 05m 34s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2018.09.15 at 09h 44m 22s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KingTest - 2018.09.15 at 09h 46m 13s.xml">
-      <configuration name="KingTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BishopTest_legalMoves1 - 2018.09.15 at 09h 52m 27s.xml">
-      <configuration name="BishopTest.legalMoves1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BishopTest_legalMoves1 - 2018.09.15 at 09h 52m 58s.xml">
-      <configuration name="BishopTest.legalMoves1" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="BishopTest_legalMoves1 - 2018.09.15 at 09h 53m 49s.xml">
       <configuration name="BishopTest.legalMoves1" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BishopTest_legalMoveLeftRight - 2018.09.15 at 10h 22m 29s.xml">
+      <configuration name="BishopTest.legalMoveLeftRight" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMoveLeftRight - 2018.09.15 at 10h 23m 34s.xml">
+      <configuration name="BishopTest.legalMoveLeftRight" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMoveLeftUp - 2018.09.15 at 10h 25m 54s.xml">
+      <configuration name="BishopTest.legalMoveLeftUp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMoveLeftUp - 2018.09.15 at 10h 32m 14s.xml">
+      <configuration name="BishopTest.legalMoveLeftUp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMoveLeftUp - 2018.09.15 at 10h 35m 48s.xml">
+      <configuration name="BishopTest.legalMoveLeftUp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMoveRightDown - 2018.09.15 at 11h 10m 09s.xml">
+      <configuration name="BishopTest.legalMoveRightDown" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMoveRightDown - 2018.09.15 at 11h 24m 49s.xml">
+      <configuration name="BishopTest.legalMoveRightDown" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMovesMiddle - 2018.09.15 at 11h 28m 25s.xml">
+      <configuration name="BishopTest.legalMovesMiddle" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BishopTest_legalMovesMiddle - 2018.09.15 at 11h 30m 18s.xml">
+      <configuration name="BishopTest.legalMovesMiddle" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164939000" />
+    <option name="totallyTimeSpent" value="168058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1633" height="1053" extended-state="6" />
@@ -730,23 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/QueenTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="173" column="25" selection-start-line="173" selection-start-column="25" selection-end-line="173" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getColor#0;class#QueenTest#0" />
-            <element signature="method#getPosition#0;class#QueenTest#0" />
-            <element signature="method#setPosition#0;class#QueenTest#0" />
-            <element signature="method#setPositionIllegal#0;class#QueenTest#0" />
-            <element signature="method#legalMoveUpLeft#0;class#QueenTest#0" />
-            <element signature="method#legalMoveBottomRight#0;class#QueenTest#0" />
-            <element signature="method#legalMovesMiddle#0;class#QueenTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/PawnTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -804,16 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/ChessPiece.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -865,19 +850,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Queen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="-420">
+          <caret line="51" column="28" lean-forward="true" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#legalMoves#0;class#Queen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="16" column="124" selection-start-line="16" selection-start-column="124" selection-end-line="16" selection-end-column="124" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#legalMoves#0;class#Bishop#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/QueenTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="184" column="5" lean-forward="true" selection-start-line="169" selection-start-column="4" selection-end-line="184" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getColor#0;class#QueenTest#0" />
+            <element signature="method#getPosition#0;class#QueenTest#0" />
+            <element signature="method#setPosition#0;class#QueenTest#0" />
+            <element signature="method#setPositionIllegal#0;class#QueenTest#0" />
+            <element signature="method#legalMoveUpLeft#0;class#QueenTest#0" />
+            <element signature="method#legalMoveBottomRight#0;class#QueenTest#0" />
+            <element signature="method#legalMovesMiddle#0;class#QueenTest#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/ChessPieces/BishopTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+        <state relative-caret-position="340">
+          <caret line="140" column="25" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getColor#0;class#BishopTest#0" />
