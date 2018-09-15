@@ -71,7 +71,5 @@ public class BishopTest {
         ChessBoard board = new ChessBoard();
         Bishop bishop = new Bishop(board, BLACK);
         board.placePiece(bishop, "d6");
-        System.out.println(Arrays.toString(bishop.legalMoves().toArray()));
-        System.out.println();
     }
 }

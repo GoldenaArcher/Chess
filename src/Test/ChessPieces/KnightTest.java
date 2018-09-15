@@ -68,14 +68,94 @@ public class KnightTest {
         knight.setPosition("i0");
     }
 
-//    @TODO test knight's legal moves
-//    need to test three pieces at top
     @Test
-    public void legalMovesTop() {
+    public void legalMovesTopLeft() {
         ChessBoard board = new ChessBoard();
         Knight knightA8 = new Knight(board, BLACK);
         board.placePiece(knightA8, "a8");
+        assertTrue(knightA8.legalMoves().containsAll(Arrays.asList("b6", "c7")));
+        assertEquals(2, knightA8.legalMoves().size());
 
+//        place 2 different color pieces on the spot
+        Knight knightBlock = new Knight(board, WHITE);
+        board.placePiece(knightBlock, "b6");
+        board.placePiece(knightBlock, "c7");
+        assertTrue(knightA8.legalMoves().containsAll(Arrays.asList("b6", "c7")));
+        assertEquals(2, knightA8.legalMoves().size());
+
+//        place 2 same color pieces on the spots to block all the moves
+        Knight knightBlockAll = new Knight(board, BLACK);
+        board.placePiece(knightBlockAll, "b6");
+        board.placePiece(knightBlockAll, "c7");
+        assertEquals(0, knightA8.legalMoves().size());
     }
 
+    @Test
+    public void legalMoveBottomRight() {
+        ChessBoard board = new ChessBoard();
+        Knight knightH1 = new Knight(board, WHITE);
+        board.placePiece(knightH1, "h1");
+        assertTrue(knightH1.legalMoves().containsAll(Arrays.asList("g3", "f2")));
+        assertEquals(2, knightH1.legalMoves().size());
+
+//        place 2 different color pieces on the spot
+        Knight knightBlock = new Knight(board, BLACK);
+        board.placePiece(knightBlock, "g3");
+        board.placePiece(knightBlock, "f2");
+        assertTrue(knightH1.legalMoves().containsAll(Arrays.asList("g3", "f2")));
+        assertEquals(2, knightH1.legalMoves().size());
+
+//        place 2 same color pieces on the spots to block all the moves
+        Knight knightBlockAll = new Knight(board, WHITE);
+        board.placePiece(knightBlockAll, "g3");
+        board.placePiece(knightBlockAll, "f2");
+        assertEquals(0, knightH1.legalMoves().size());
+    }
+
+    @Test
+    public void legalMiddle() {
+        ChessBoard board = new ChessBoard();
+        Knight knightE5 = new Knight(board, WHITE);
+        board.placePiece(knightE5, "e5");
+        assertTrue(knightE5.legalMoves().containsAll(Arrays.asList("c6", "c4", "d7", "d3", "f7", "f3", "g6", "g4")));
+        assertEquals(8, knightE5.legalMoves().size());
+
+//        place some different color pieces on the spots to block the moves
+        Knight knightBLock = new Knight(board, BLACK);
+        board.placePiece(knightBLock, "c6");
+        board.placePiece(knightBLock, "d7");
+        board.placePiece(knightBLock, "f7");
+        board.placePiece(knightBLock, "g6");
+        assertTrue(knightE5.legalMoves().containsAll(Arrays.asList("c6", "c4", "d7", "d3", "f7", "f3", "g6", "g4")));
+        assertEquals(8, knightE5.legalMoves().size());
+
+//        place different color pieces to block all the moves
+        Knight knightBlockAll = new Knight(board, WHITE);
+        board.placePiece(knightBlockAll, "c6");
+        board.placePiece(knightBlockAll, "c4");
+        board.placePiece(knightBlockAll, "d7");
+        board.placePiece(knightBlockAll, "d3");
+        board.placePiece(knightBlockAll, "f7");
+        board.placePiece(knightBlockAll, "f3");
+        board.placePiece(knightBlockAll, "g6");
+        board.placePiece(knightBlockAll, "g4");
+        assertEquals(0, knightE5.legalMoves().size());
+    }
+
+    //    Exception test, should not have any result, throw a bunch of exceptions, but not terminate
+    @Test
+    public void testEdges() {
+        ChessBoard board = new ChessBoard();
+        Knight knightEdge = new Knight(board, BLACK);
+        board.placePiece(knightEdge, "A10");
+        assertEquals(0, knightEdge.legalMoves().size());
+        board.placePiece(knightEdge, "A9");
+        assertEquals(0, knightEdge.legalMoves().size());
+        board.placePiece(knightEdge, "a9");
+        assertEquals(0, knightEdge.legalMoves().size());
+        board.placePiece(knightEdge, "h9");
+        assertEquals(0, knightEdge.legalMoves().size());
+        board.placePiece(knightEdge, "G9");
+        assertEquals(0, knightEdge.legalMoves().size());
+    }
 }

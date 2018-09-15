@@ -15,6 +15,7 @@ import junit.framework.JUnit4TestAdapter;
         KingTest.class,
         BishopTest.class,
         QueenTest.class,
+        KnightTest.class,
 })
 
 public class AllTests {
