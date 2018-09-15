@@ -1,6 +1,5 @@
 package Main.ChessPieces;
 
-import Main.Chess;
 import Main.ChessBoard;
 import Main.IllegalPositionException;
 

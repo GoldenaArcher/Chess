@@ -3,7 +3,6 @@ package Main.ChessPieces;
 import Main.ChessBoard;
 import Main.IllegalPositionException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -27,22 +26,22 @@ public class Rook extends ChessPiece {
 
         if (color != piece.getColor())      // if there is another piece and the color is different
             return 1;
-        else    return 2;               // if that piece's color is same
+        else return 2;               // if that piece's color is same
     }
 
-//    Merge both methods(upDown & leftRight) to reduce repeated code
+    //    Merge both methods(upDown & leftRight) to reduce repeated code
 //    The idea is simple, only need to check all the way to left, right, up, down. So pass 1 parameter for manipulation
 //    of column, 1 parameter for row. If check up, pass -1 for check up, -1 for down, +1 for right, -1 for left
-    private ArrayList<String> findLegalMoves(int rowIncrementation, int colIncrementation){
-        ArrayList <String> res = new ArrayList<>();
+    private ArrayList<String> findLegalMoves(int rowIncrementation, int colIncrementation) {
+        ArrayList<String> res = new ArrayList<>();
         int tempRow = row + rowIncrementation;      // +1 moves from X8 -> X1, and -1 moves from X1 -> X8
         int tempCol = column + colIncrementation;   // +1 moves from AX -> HX, and -1 moves from HX -> AX
 
         String position;
 
         while (tempRow < 8 && tempRow >= 0 && tempCol < 8 && tempCol >= 0) {
-            position = "" + (char) (tempCol + 'a') +  (7 - tempRow + 1);
-            switch (positionCheck(position)){
+            position = "" + (char) (tempCol + 'a') + (7 - tempRow + 1);
+            switch (positionCheck(position)) {
                 default:    // case 0, position checked is null, add it and continue
                     res.add(position);
                     break;
@@ -65,15 +64,15 @@ public class Rook extends ChessPiece {
      */
     @Override
     public ArrayList<String> legalMoves() {
-        ArrayList <String> res = new ArrayList<>();
+        ArrayList<String> res = new ArrayList<>();
 
         if (!getPosition().matches("^[a-h][1-8]$"))
             return res;
 
         res.addAll(findLegalMoves(1, 0));  // check from X8 -> X1
         res.addAll(findLegalMoves(-1, 0)); // check from X1 -> X8
-        res.addAll(findLegalMoves(0,1));  // check from AX -> HX
-        res.addAll(findLegalMoves(0,-1));  // check from HX -> AX
+        res.addAll(findLegalMoves(0, 1));  // check from AX -> HX
+        res.addAll(findLegalMoves(0, -1));  // check from HX -> AX
         return res;
     }
 

@@ -1,6 +1,5 @@
 package Test;
 
-import Main.ChessPieces.Queen;
 import Test.ChessPieces.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

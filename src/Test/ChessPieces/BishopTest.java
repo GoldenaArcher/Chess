@@ -69,7 +69,10 @@ public class BishopTest {
     @Test
     public void legalMoves1() {
         ChessBoard board = new ChessBoard();
-        Bishop bishop = new Bishop(board, BLACK);
-        board.placePiece(bishop, "d6");
+        Bishop bishopD6 = new Bishop(board, BLACK);
+        board.placePiece(bishopD6, "d6");
+        String[] res = {"a3", "b8", "b4", "c7", "c5", "e7", "e5", "f8", "f4", "g3", "h2"};
+        assertTrue(bishopD6.legalMoves().containsAll(Arrays.asList(res)));
+        assertEquals(bishopD6.legalMoves().size(), res.length);
     }
 }
