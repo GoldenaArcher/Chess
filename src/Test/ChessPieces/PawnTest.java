@@ -59,7 +59,16 @@ public class PawnTest {
         }
     }
 
-    //    No need to check the last row as promotion is not implemented yet
+    @Test (expected = IllegalPositionException.class)
+    public void setPositionIllegal() throws IllegalPositionException {
+        ChessBoard localBoard = new ChessBoard();
+        Pawn pawn = new Pawn(localBoard, BLACK);
+        pawn.setPosition("a10");
+        pawn.setPosition("a0");
+        pawn.setPosition("B1");
+        pawn.setPosition("i0");
+    }
+
 //    Black Pawn tests. Put a black pawn on A row, and check it's legal moves
     @Test
     public void legalMovesMostLeftBlack() {
@@ -302,4 +311,7 @@ public class PawnTest {
         board.placePiece(newPawn, "k2");
         assertEquals(0, whitePawnA8.legalMoves().size());
     }
+
+//    @TODO check pawn promotion later
+//    @TODO check En Passant later
 }

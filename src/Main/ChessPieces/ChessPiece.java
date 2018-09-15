@@ -23,6 +23,12 @@ public abstract class ChessPiece {
         this.row = -1;
     }
 
+//    used by Bishop and Queen
+    void resetRowCol(int row, int col) {
+        this.row = row;
+        this.column = col;
+    }
+
     //    This method returns the color of the piece. There is no need for a setColor method because a piece cannot change color.
     public Color getColor() {
         return color;
@@ -38,10 +44,28 @@ public abstract class ChessPiece {
     public void setPosition(String position) throws IllegalPositionException {
         int letter = position.charAt(0) - 'a';
         int digit = 7 - (position.charAt(1) - '1');
-        if (letter > 7 || letter < 0 || digit < 0 || digit > 7)
+        if (!position.matches("^[a-h][1-8]$"))
             throw new IllegalPositionException("Position is illegal, it must be between a1 to h8");
         row = digit;
         column = letter;
+    }
+
+//    for now, applicable for King and Knight, so added as a protected methods for at least King and Pawn to access
+    String validMove(int rowIncrementation, int colIncrementation){
+        int tempRow = row + rowIncrementation, tempCol = column + colIncrementation;
+        if (tempCol <8 && tempCol >= 0 && tempRow < 8 && tempRow >= 0) {
+            String position = "" + (char) (tempCol + 'a') +  (7 - tempRow + 1);
+            ChessPiece piece = null;
+            try {
+                piece = board.getPiece(position);
+            } catch (IllegalPositionException e) {
+                System.out.println("error occurred in position check, please come back and check the error");
+            }
+            if (piece == null || piece.getColor() != color) {
+                return position;
+            }
+        }
+        return null;
     }
 
     abstract public ArrayList<String> legalMoves();

@@ -1,19 +1,20 @@
 package Test;
 
-import Test.ChessPieces.KingTest;
-import Test.ChessPieces.PawnTest;
-import Test.ChessPieces.RookTest;
+import Test.ChessPieces.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import junit.framework.JUnit4TestAdapter;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestChess.class,
+//        TestChess.class,
         ChessBoardTest.class,
         PawnTest.class,
         RookTest.class,
         KingTest.class,
+        BishopTest.class,
+        QueenTest.class,
+        KnightTest.class,
 })
 
 public class AllTests {

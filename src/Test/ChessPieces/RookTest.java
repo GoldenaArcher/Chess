@@ -55,6 +55,16 @@ public class RookTest {
         }
     }
 
+    @Test (expected = IllegalPositionException.class)
+    public void setPositionIllegal() throws IllegalPositionException {
+        ChessBoard localBoard = new ChessBoard();
+        Rook localRook = new Rook(localBoard, BLACK);
+        localRook.setPosition("a10");
+        localRook.setPosition("a0");
+        localRook.setPosition("B1");
+        localRook.setPosition("i0");
+    }
+
     @Test
     public void legalMovesLeftUp() {
         ChessBoard board = new ChessBoard();
