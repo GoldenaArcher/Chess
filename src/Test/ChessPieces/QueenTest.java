@@ -83,7 +83,6 @@ public class QueenTest {
         board.placePiece(queenBlock, "e8");
         board.placePiece(queenBlock, "a7");
         String[] resA82 = {"a7", "b8", "c8", "d8", "e8", "b7", "c6", "d5"};
-//        System.out.println(Arrays.toString(queenA8.legalMoves().toArray()) + queenA8.legalMoves().size());
         assertEquals(resA82.length, queenA8.legalMoves().size());
         assertTrue(queenA8.legalMoves().containsAll(Arrays.asList(resA82)));
 
@@ -116,6 +115,12 @@ public class QueenTest {
         assertEquals(resA82.length, queenH1.legalMoves().size());
         assertTrue(queenH1.legalMoves().containsAll(Arrays.asList(resA82)));
 
+        //        place another piece to block all the movements
+        Queen queenBlockAll = new Queen(board, WHITE);
+        board.placePiece(queenBlockAll, "h2");
+        board.placePiece(queenBlockAll, "g2");
+        board.placePiece(queenBlockAll, "g1");
+        assertEquals(0, queenH1.legalMoves().size());
     }
 
     @Test
@@ -134,6 +139,32 @@ public class QueenTest {
         Set<String> uniqueKey = new HashSet<>(solution);
         assertEquals(uniqueKey.size(), queenE5.legalMoves().size());
         assertTrue(queenE5.legalMoves().containsAll(Arrays.asList(uniqueKey.toArray())));
+
+//        to put some different pieces to block some of its moves
+        Queen queenBlock = new Queen(board, WHITE);
+        board.placePiece(queenBlock, "c7"); // left up
+        board.placePiece(queenBlock, "b2"); // left down
+        board.placePiece(queenBlock, "c5"); // left
+        board.placePiece(queenBlock, "e6"); // up
+        board.placePiece(queenBlock, "e4"); // down
+        board.placePiece(queenBlock, "g5"); // right
+        board.placePiece(queenBlock, "f6"); // right up
+        board.placePiece(queenBlock, "g3"); // right down
+        String[] resBlock = {"b2", "c7", "c5", "c3", "d6", "d5", "d4",
+                "e6", "e4", "f6", "f5", "f4", "g5", "g3"};
+        assertTrue(queenE5.legalMoves().containsAll(Arrays.asList(resBlock)));
+        assertEquals(queenE5.legalMoves().size(), resBlock.length);
+
+        Queen queenBlockAll = new Queen(board, BLACK);
+        board.placePiece(queenBlockAll, "d6");
+        board.placePiece(queenBlockAll, "d5");
+        board.placePiece(queenBlockAll, "d4");
+        board.placePiece(queenBlockAll, "e6");
+        board.placePiece(queenBlockAll, "e4");
+        board.placePiece(queenBlockAll, "f6");
+        board.placePiece(queenBlockAll, "f5");
+        board.placePiece(queenBlockAll, "f4");
+        assertEquals(0, queenE5.legalMoves().size());
     }
 
     //    Exception test, should not have any result, throw a bunch of exceptions, but not terminate
