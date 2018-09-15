@@ -20,10 +20,27 @@ public class BishopTest {
 
     @Test
     public void getColor() {
+        ChessBoard board = new ChessBoard();
+        Bishop bishopBlack = new Bishop(board, BLACK);
+        Bishop bishopWhite = new Bishop(board, WHITE);
+
+        assertEquals(BLACK, bishopBlack.getColor());
+        assertEquals(WHITE, bishopWhite.getColor());
     }
 
     @Test
     public void getPosition() {
+        ChessBoard board = new ChessBoard();
+        Bishop bishop = new Bishop(board, BLACK);
+        board.placePiece(bishop, "a7");
+        assertEquals("a7", bishop.getPosition());
+//        Test with some edge cases
+        board.placePiece(bishop, "a10");
+        assertTrue(!"a10".equals(bishop.getPosition()));
+        board.placePiece(bishop, "a");
+        assertTrue(!"a".equals(bishop.getPosition()));
+        board.placePiece(bishop, "i8");
+        assertTrue(!"f8".equals(bishop.getPosition()));
     }
 
     @Test
