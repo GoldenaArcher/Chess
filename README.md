@@ -11,7 +11,11 @@ java -jar <name-of-the-jar-file-with-correct-version>.jar
 ```
 The initialized board should appeared on the board, and user can move the piece by entering the corresponding position on the terminal.
 
-![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/screenshot.png)
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example1.png)
+
+After giving the position to move, and the board will be printed again:
+
+![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example2.png)
 
 ## Project Contributors
 
@@ -24,3 +28,5 @@ Started as one of the mini-projects of [CS414](http://www.cs.colostate.edu/~cs41
 The instruction of setting up coverage of tests were taken from past course of [cs314](http://www.cs.colostate.edu/~cs314). The original page was posted on Piazza.
 
 The very first GUI set up is learnt from [Derek Banas](https://www.youtube.com/channel/UCwRXb5dUK4cvsHbx-rGzSgw), and his series of [JAVA SWING TUTORIAL](https://www.youtube.com/watch?v=3XB3in9Xqy8&list=PLfyq5A05w62_verkKr3DWKWbttvdgexH3).
+
+Logo is found on [Kung Fu Chess](https://www.kfchess.com), and chess pieces' images are found on [Icons8](https://icons8.com/icon/set/Chess/all).
