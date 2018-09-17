@@ -1,21 +1,26 @@
 package Main;
 
 import Main.ChessPieces.*;
+import Main.ChessPieces.ChessPiece.Color;
 
 import java.util.ArrayList;
+
+import static Main.ChessPieces.ChessPiece.Color.WHITE;
+import static Main.ChessPieces.ChessPiece.Color.BLACK;
 
 /**
  * @author Lu Han
  */
 public class ChessBoard {
     private ChessPiece[][] board;
+    private King kingB, kingW;
 
     public ChessBoard() {
         board = new ChessPiece[8][8];
     }
 
 //    this is a helper function to implements the chess pieces on the board for initialization
-    private void initializePieces(ChessPiece.Color color, int column, String position) {
+    private void initializePieces(Color color, int column, String position) {
         switch (column) {
             case 0:
             case 7:
@@ -30,7 +35,11 @@ public class ChessBoard {
                 placePiece(new Bishop(this, color), position);
                 break;
             case 4:
-                placePiece(new King(this, color), position);
+                King king = new King(this, color);
+                placePiece(king, position);
+                if (color == BLACK)
+                    kingB = king;
+                else  kingW = king;
                 break;
             default:
                 placePiece(new Queen(this, color), position);
@@ -41,8 +50,8 @@ public class ChessBoard {
 // should use the constructors of the appropriate pieces, and call placePiece below to place the newly constructed pieces in the right position.
     public void initialize() {
 //        To initialize piece into correct position, i.e.,a1 is the white rook etc. Refer to chess rules for details
-        ChessPiece.Color black = ChessPiece.Color.BLACK;
-        ChessPiece.Color white = ChessPiece.Color.WHITE;
+        Color black = BLACK;
+        Color white = WHITE;
         String position;
         for (int row = 0; row < 8; row++) {   // i refers to the digit, and row
             for (int column = 0; column < 8; column++) {   // j refers to the alphabet or letter, and column
@@ -114,7 +123,7 @@ public class ChessBoard {
         }
 
         if (fromPiece == null)
-            throw new IllegalMoveException(from + " dees not have any chess piece on it");
+            throw new IllegalMoveException(from + " Does not have any chess piece on it");
 
         ArrayList<String> legalMove = fromPiece.legalMoves();
 
@@ -125,7 +134,18 @@ public class ChessBoard {
             board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
         else
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces may be the same color");
+
+        System.out.println(toString());
+
+        if (toPiece instanceof King)
+            System.out.println("Game Over");
     }
+
+//    @TODO check if move leads to check
+    private void check(){}
+
+    //    @TODO check if move leads to checkmate
+    private void checkmate() {}
 
     public String toString() {
             StringBuilder res = new StringBuilder(" ┌─┬─┬─┬─┬─┬─┬─┬─┐\n");

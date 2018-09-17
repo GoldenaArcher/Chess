@@ -2,6 +2,7 @@ package Test;
 
 import Main.ChessBoard;
 import Main.ChessPieces.*;
+import Main.IllegalMoveException;
 import Main.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,9 +15,11 @@ import static org.junit.Assert.*;
  */
 public class ChessBoardTest {
     private ChessBoard chessBoard;
+
     @Before
     public void setUp() {
         chessBoard = new ChessBoard();
+        chessBoard.initialize();
     }
 
     @Test
@@ -31,7 +34,7 @@ public class ChessBoardTest {
         assertFalse(chessBoard.placePiece(rookWhite, "A10"));
     }
 
-//    in this case, all passed parameters are valid, so there should not be a test that fails
+    //    in this case, all passed parameters are valid, so there should not be a test that fails
     @Test
     public void getPiece() {
         Rook rook = new Rook(chessBoard, ChessPiece.Color.BLACK);
@@ -45,16 +48,33 @@ public class ChessBoardTest {
         }
     }
 
-//    also, have to test if the proper exceptions have been thrown by getPiece methods
-    @Test(expected=IllegalPositionException.class)
+    //    also, have to test if the proper exceptions have been thrown by getPiece methods
+    @Test(expected = IllegalPositionException.class)
     public void getPieceIllegalPosition() throws IllegalPositionException {
-        chessBoard.getPiece("a10");
-        chessBoard.getPiece("A1");
-        chessBoard.getPiece("h9");
-        chessBoard.getPiece("l9");
+        chessBoard.getPiece("a10"); // 1st test to test if the length is different
     }
 
-    private boolean testOtherPiece(ChessPiece piece, int column){
+    @Test(expected = IllegalPositionException.class)
+    public void getPieceIllegalPosition2() throws IllegalPositionException {
+        chessBoard.getPiece("A1");  // test when uppercase is given
+    }
+
+    @Test(expected = IllegalPositionException.class)
+    public void getPieceIllegalPosition3() throws IllegalPositionException {
+        chessBoard.getPiece("h9");  // test when piece is placed outside of the board (range isn't right
+    }
+
+    @Test(expected = IllegalPositionException.class)
+    public void getPieceIllegalPosition4() throws IllegalPositionException {
+        chessBoard.getPiece("l9");  // test a wrong string
+    }
+
+    @Test(expected = IllegalPositionException.class)
+    public void getPieceIllegalPosition5() throws IllegalPositionException {
+        chessBoard.getPiece("j1");  // test another different range
+    }
+
+    private boolean testOtherPiece(ChessPiece piece, int column) {
         switch (column) {
             case 0:
             case 7:
@@ -73,7 +93,7 @@ public class ChessBoardTest {
     }
 
     @Test
-    public void initialize(){
+    public void initialize() {
         chessBoard.initialize();
 
         ChessPiece.Color black = ChessPiece.Color.BLACK;
@@ -95,12 +115,85 @@ public class ChessBoardTest {
                     }
                 }
             }
-        } catch (IllegalPositionException e){
+        } catch (IllegalPositionException e) {
             System.out.println("Fail on the initialization process in testcase.");
         }
     }
 
-    @Test
-    public void move() {
+    @Test       // at this time, the board has been initialized
+    public void move() throws IllegalMoveException {
+//        move white pieces, and try to scatter moved pieces if possible
+        chessBoard.move("g2", "g4");
+        chessBoard.move("g1", "f3");
+        chessBoard.move("h1", "g1");
+        chessBoard.move("b2", "b4");
+        chessBoard.move("b1", "c3");
+        chessBoard.move("e2", "e4");
+        chessBoard.move("g1", "g3");
+        chessBoard.move("g3", "h3");
+        chessBoard.move("c1", "a3");
+        chessBoard.move("c3", "d5");
+        chessBoard.move("d1", "b1");
+        chessBoard.move("b1", "b3");
+        chessBoard.move("b3", "c4");
+//        move black pieces, and try to scatter moved pieces if possible
+        chessBoard.move("d7", "d6");
+        chessBoard.move("h7", "h5");
+        chessBoard.move("g8", "f6");
+        chessBoard.move("b7", "b5");
+        chessBoard.move("b8", "c6");
+        chessBoard.move("d8", "d7");
+        chessBoard.move("c8", "a6");
+        chessBoard.move("e7", "e6");
+        chessBoard.move("h8", "h6");
+//        now, try to do some capture
+        chessBoard.move("e6", "d5");
+        chessBoard.move("e4", "d5");
+        chessBoard.move("f6", "g4");
+        chessBoard.move("c4", "g4");
+        chessBoard.move("c6", "b4");
+        chessBoard.move("h3", "h5");
+        chessBoard.move("h6", "h5");
+        chessBoard.move("g4", "h5");
+        chessBoard.move("h5", "f7");
+        chessBoard.move("f7", "e8");    // should expect to see a game over notification
+    }
+
+    //    to test the illegal moves that could occurred in the process of game
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal1() throws IllegalMoveException {
+        chessBoard.initialize();
+        System.out.println(chessBoard.toString());
+        chessBoard.move("a8", "a7");    // move piece to a block position - to position is occupied - castle
+    }
+
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal2() throws IllegalMoveException {
+        chessBoard.move("g8", "e7");    // move piece to illegal position, not in knight's move pattern
+    }
+
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal3() throws IllegalMoveException {
+        chessBoard.move("d1", "d6");    // queen's path has a same color piece to block the move
+    }
+
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal4() throws IllegalMoveException {
+        chessBoard.move("c3", "c4");    // from position is empty
+    }
+
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal5() throws IllegalMoveException {
+        chessBoard.move("e1", "e0");    // king move outside of the board
+    }
+
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal6() throws IllegalMoveException {
+        chessBoard.move("f2", "g3");    // pawn try to capture, but there's no piece on captured position
+    }
+
+    @Test(expected = IllegalMoveException.class)
+    public void moveIllegal7() throws IllegalMoveException {
+        chessBoard.move("c1", "a3");    // move Bishop over to blocked path
     }
 }
