@@ -1,9 +1,9 @@
 package Test;
 
-import Main.ChessBoard;
+import Main.Operation.ChessBoard;
 import Main.ChessPieces.*;
-import Main.IllegalMoveException;
-import Main.IllegalPositionException;
+import Main.Operation.IllegalMoveException;
+import Main.Operation.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
 

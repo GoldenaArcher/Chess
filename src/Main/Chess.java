@@ -1,5 +1,8 @@
 package Main;
 
+import Main.Operation.ChessBoard;
+import Main.Operation.IllegalMoveException;
+
 import java.util.Scanner;
 
 /**
