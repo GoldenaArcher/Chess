@@ -1,9 +1,8 @@
 package Test.ChessPieces;
 
-import Main.ChessBoard;
-import Main.ChessPieces.ChessPiece;
+import Main.Operation.ChessBoard;
 import Main.ChessPieces.Pawn;
-import Main.IllegalPositionException;
+import Main.Operation.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
 

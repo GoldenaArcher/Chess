@@ -1,4 +1,4 @@
-package Main;
+package Main.Operation;
 
 import Main.ChessPieces.*;
 import Main.ChessPieces.ChessPiece.Color;

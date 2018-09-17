@@ -1,6 +1,6 @@
 package Main.ChessPieces;
 
-import Main.ChessBoard;
+import Main.Operation.ChessBoard;
 
 import java.util.ArrayList;
 import java.util.Collections;

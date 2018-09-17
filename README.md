@@ -17,6 +17,11 @@ After giving the position to move, and the board will be printed again:
 
 ![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example2.png)
 
+## Project Structure
+- ChessPieces
+- Operation
+- Vies
+
 ## Project Contributors
 
 * **[Lu Han](https://github.com/GoldenaArcher)** (lu.han9467@gmail.com)
