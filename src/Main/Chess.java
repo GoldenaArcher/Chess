@@ -2,6 +2,7 @@ package Main;
 
 import Main.Operation.ChessBoard;
 import Main.Operation.IllegalMoveException;
+import Main.View.ChessboardMainFrame;
 
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ import java.util.Scanner;
  */
 public class Chess {
     public static void main(String[] args) {
+        new ChessboardMainFrame();
         ChessBoard board = new ChessBoard();
         board.initialize();
         System.out.println(board.toString());
@@ -24,7 +26,7 @@ public class Chess {
             try {
                 board.move(from, to);
             } catch (IllegalMoveException e) {
-                e.printStackTrace();
+                System.out.println("Illegal moves");
             }
             try {
                 exit = scanner.nextInt();
@@ -32,5 +34,6 @@ public class Chess {
             }
         }
         scanner.close();
+        System.exit(0);
     }
 }
