@@ -18,9 +18,9 @@ After giving the position to move, and the board will be printed again:
 ![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example2.png)
 
 ## Project Structure
-- ChessPieces
-- Operation
-- Vies
+- ChessPieces provides a basic attributes of a chess piece, such as color, position, its legal moves. For more details, refer to [ChessPieces.md](https://github.com/GoldenaArcher/Chess/blob/master/src/Main/ChessPieces/ChessPieces.md).
+- Operation implements various functions which allow player to initialize the board, moves pieces on the board, etc. For more details, refer to [Operation.md](https://github.com/GoldenaArcher/Chess/tree/master/src/Main/Operation/Operation.md)
+- Provides GUI(Graphical User Interface) for the application. For more details, refer to [View.md](https://github.com/GoldenaArcher/Chess/blob/master/src/Main/View/View.md)
 
 ## Project Contributors
 

@@ -6,9 +6,9 @@ on the chessboard, move the chess pieces on the board, etc.
 ### Function 
 
 #### Illegal exception.
-* Illegal Position Exception - throw exception when the position received is not valid.
+* Illegal Position Exception - refer to invalid position provided by player.
 
-* Illegal Move Exception - throw exception when play tries to move piece that could not be moved.
+* Illegal Move Exception - refer to the invalid move of chess pieces.
 
   1. If player try to move piece from a position that does not contain piece.
   
@@ -21,3 +21,15 @@ on the chessboard, move the chess pieces on the board, etc.
      - Try to move the piece to the position that is not included in the legal move.
      
 ### Chessboard
+
+* Implemented the details functions to catch and throw exceptions listed above.
+
+* Initialize the chess board in the format listed below:
+
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example1.png)
+
+* Aak user to give the position and therefore move the pieces on the board:
+
+![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example2.png)
+
+* Display the chessboard each time after each move.
