@@ -23,7 +23,6 @@ public class Chess {
             } catch (IllegalMoveException e) {
                 e.printStackTrace();
             }
-            System.out.println(board.toString());
             try {
                 exit = scanner.nextInt();
             } catch (Exception ignored){
