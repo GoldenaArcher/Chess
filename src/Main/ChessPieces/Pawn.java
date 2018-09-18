@@ -1,7 +1,7 @@
 package Main.ChessPieces;
 
 import Main.Operation.ChessBoard;
-import Main.Operation.IllegalPositionException;
+import Main.Exception.IllegalPositionException;
 
 import java.util.ArrayList;
 import java.util.Collections;

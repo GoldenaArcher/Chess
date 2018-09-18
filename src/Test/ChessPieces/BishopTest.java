@@ -2,7 +2,7 @@ package Test.ChessPieces;
 
 import Main.Operation.ChessBoard;
 import Main.ChessPieces.Bishop;
-import Main.Operation.IllegalPositionException;
+import Main.Exception.IllegalPositionException;
 import org.junit.Before;
 import org.junit.Test;
 

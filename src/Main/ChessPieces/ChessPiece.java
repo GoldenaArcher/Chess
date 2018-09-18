@@ -1,7 +1,7 @@
 package Main.ChessPieces;
 
 import Main.Operation.ChessBoard;
-import Main.Operation.IllegalPositionException;
+import Main.Exception.IllegalPositionException;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,12 @@ public abstract class ChessPiece {
     protected int row, column;
 
     //    A piece of chess piece needs color as it's property, and position
+
+    /**
+     * constructor for individual chess
+     * @param board the chessboard passed
+     * @param color the color of the chess
+     */
     public ChessPiece(ChessBoard board, Color color) {
         this.board = board;
         this.color = color;

@@ -2,6 +2,8 @@ package Main.Operation;
 
 import Main.ChessPieces.*;
 import Main.ChessPieces.ChessPiece.Color;
+import Main.Exception.IllegalMoveException;
+import Main.Exception.IllegalPositionException;
 
 import java.util.ArrayList;
 

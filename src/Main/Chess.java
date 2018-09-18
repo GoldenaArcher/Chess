@@ -1,7 +1,7 @@
 package Main;
 
 import Main.Operation.ChessBoard;
-import Main.Operation.IllegalMoveException;
+import Main.Exception.IllegalMoveException;
 import Main.View.ChessboardMainFrame;
 
 import java.util.Scanner;
