@@ -1,21 +1,20 @@
 package Main.View;
 
 import java.awt.*;
-import java.io.File;
 import javax.swing.*;       // all different frames of GUI
 
 /**
  * @author Lu Han
  */
 
-public class ChessboardMainFrame extends JFrame {
+public class ChessMainFrame extends JFrame {
 
 //    private JPanel[] jPanel;   // 2 panel, 1 for the game board and the other for game record
-    private Board board;   // 2 panel, 1 for the game board and the other for game record
+    private ChessboardFrame board;   // 2 panel, 1 for the game board and the other for game record
     private Record record;
 
-    public ChessboardMainFrame() {
-        board = new Board();
+    public ChessMainFrame() {
+        board = new ChessboardFrame();
         record = new Record();
         setFrame();
     }
@@ -38,8 +37,8 @@ public class ChessboardMainFrame extends JFrame {
 
 //        add 2 panels into frame
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-        this.add(board);
-        this.add(record);
+        this.add(board, BorderLayout.WEST);
+        this.add(record, BorderLayout.EAST);
 
         this.setVisible(true);
     }

@@ -5,12 +5,16 @@ import Main.Exception.IllegalPositionException;
 
 import java.util.ArrayList;
 
+import static Main.ChessPieces.ChessPiece.Color.BLACK;
+
 /**
  * @author Lu Han
  */
 public class Rook extends ChessPiece {
     public Rook(ChessBoard board, Color color) {
         super(board, color);
+        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_rook.png");
+        else setPath("./extraFiles/chessMaterials/white_rook.png");
     }
 
     private int positionCheck(String position) {    // return 0 if that place is null, 1 for different color, 2 for same color

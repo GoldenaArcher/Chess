@@ -4,12 +4,16 @@ import Main.Exception.IllegalPositionException;
 
 import java.util.ArrayList;
 
+import static Main.ChessPieces.ChessPiece.Color.BLACK;
+
 /**
  * @author Lu Han
  */
 public class Bishop extends  ChessPiece{
     public Bishop (ChessBoard board, Color color) {
         super(board, color);
+        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_bishop.png");
+        else setPath("./extraFiles/chessMaterials/white_bishop.png");
     }
 
         /*

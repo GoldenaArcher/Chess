@@ -5,12 +5,16 @@ import Main.Operation.ChessBoard;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static Main.ChessPieces.ChessPiece.Color.BLACK;
+
 /**
  * @author Lu Han
  */
 public class Knight extends  ChessPiece{
     public Knight (ChessBoard board, Color color) {
         super(board, color);
+        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_knight.png");
+        else setPath("./extraFiles/chessMaterials/white_knight.png");
     }
 
     /*

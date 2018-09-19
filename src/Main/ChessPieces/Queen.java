@@ -5,12 +5,16 @@ import Main.Exception.IllegalPositionException;
 
 import java.util.ArrayList;
 
+import static Main.ChessPieces.ChessPiece.Color.BLACK;
+
 /**
  * @author Lu Han
  */
 public class Queen extends ChessPiece {
     public Queen(ChessBoard board, Color color) {
         super(board, color);
+        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_queen.png");
+        else setPath("./extraFiles/chessMaterials/white_queen.png");
     }
 
     /*

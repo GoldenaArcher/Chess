@@ -9,11 +9,13 @@ import java.util.ArrayList;
  * @author Lu Han
  */
 public abstract class ChessPiece {
-    public enum Color {BLACK, WHITE}
+     public enum Color {BLACK, WHITE}
 
     protected ChessBoard board;
     protected Color color;
     protected int row, column;
+
+    private String path;    // the path of image
 
     //    A piece of chess piece needs color as it's property, and position
 
@@ -27,6 +29,14 @@ public abstract class ChessPiece {
         this.color = color;
         this.column = -1;
         this.row = -1;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    void setPath(String path) {
+        this.path = path;
     }
 
 //    used by Bishop and Queen

@@ -6,12 +6,16 @@ import Main.Exception.IllegalPositionException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static Main.ChessPieces.ChessPiece.Color.BLACK;
+
 /**
  * @author Lu Han
  */
 public class Pawn extends ChessPiece {
     public Pawn(ChessBoard board, Color color) {
         super(board, color);
+        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_pawn.png");
+        else setPath("./extraFiles/chessMaterials/white_pawn.png");
     }
 
 
