@@ -3,21 +3,34 @@ A simple chess game implemented in Java.
 
 ## Features
 - All possible moves of chess piece are determined.
+- GUI is implemented therefore player can play the game on the screen.
 
 ## How to Run the Game
 In the terminal, direct to the source file's location, then type
 ```$xslt
 java -jar <name-of-the-jar-file-with-correct-version>.jar
 ```
-The initialized board should appeared on the board, and user can move the piece by entering the corresponding position on the terminal.
 
-![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/example1.png)
+Or simply double click jar file.
 
-After giving the position to move, and the board will be printed again:
+The initialized board should appeared on the board.
 
-![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/example2.png)
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/runResult/v2_1.png)
+
+Player can click the piece, and correspond position of the chosen square will pop up.
+
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/runResult/v2_2.png)
+
+After player makes move, the chess piece will moves to the correspond position as well.
+
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/runResult/v2_3.png)
+
+Player can move pieces arount and continue the game.
+
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/runResult/v2_4.png)
 
 ## Project Structure
+- Exception provides 2 exceptions that will be thrown in the game. For more details, refer to [Exception.md](https://github.com/GoldenaArcher/Chess/blob/master/src/Main/Exception/Exception.md)
 - ChessPieces provides a basic attributes of a chess piece, such as color, position, its legal moves. For more details, refer to [ChessPieces.md](https://github.com/GoldenaArcher/Chess/blob/master/src/Main/ChessPieces/ChessPieces.md).
 - Operation implements various functions which allow player to initialize the board, moves pieces on the board, etc. For more details, refer to [Operation.md](https://github.com/GoldenaArcher/Chess/tree/master/src/Main/Operation/Operation.md)
 - Provides GUI(Graphical User Interface) for the application. For more details, refer to [View.md](https://github.com/GoldenaArcher/Chess/blob/master/src/Main/View/View.md)

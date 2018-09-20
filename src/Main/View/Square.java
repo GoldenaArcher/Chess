@@ -19,11 +19,6 @@ public class Square extends JPanel{
 
     private ChessPiece piece;
 
-    public Square(String pos) {
-//        this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        this(null, pos);
-    }
-
     public Square(ChessPiece piece, String pos) {
         setPiece(piece);
         this.position = pos;
