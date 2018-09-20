@@ -32,7 +32,7 @@ public class ChessMainFrame extends JFrame {
         this.setResizable(true);  // allow user to resize the window, by default is false
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // click close button to close the work
         this.setTitle("Chess");
-        this.setIconImage(tk.getImage("./extraFiles/chessMaterials/logo.png")); // change the icon of app
+        this.setIconImage(tk.getImage(this.getClass().getResource("chessMaterials/logo.png"))); // change the icon of app
 
 //        add 2 panels into frame
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));

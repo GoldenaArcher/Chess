@@ -2,6 +2,7 @@ package Main.View;
 
 import Main.ChessPieces.*;
 import Main.Exception.IllegalMoveException;
+import Main.Exception.IllegalPositionException;
 import Main.Operation.ChessBoard;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class ChessboardFrame extends JPanel implements MouseListener {
             "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"};
     protected String from;
 
-    public ChessboardFrame() {
+    ChessboardFrame() {
         cb = new ChessBoard();
         cb.initialize();
         board = new Square[64];
@@ -41,7 +42,7 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         from = "";
     }
 
-    void setPiece(int i, ChessPiece piece){
+    private void setPiece(int i, ChessPiece piece){
         Square square = new Square(piece, pos[i]);
         board[i] = square;
     }
@@ -54,17 +55,17 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         int count = 0, circle = 1;      // variables to keep track how to add square's color
         for (int i = 0; i < 64; i++) {  // implement each cell with the given color
             if (i == 0 || i == 7)
-                setPiece(i, new Bishop(cb, BLACK));
+                setPiece(i, new Rook(cb, BLACK));
             else if (i == 63 || i == 56)
-                setPiece(i, new Bishop(cb, WHITE));
+                setPiece(i, new Rook(cb, WHITE));
             else if (i == 1 || i == 6)
                 setPiece(i, new Knight(cb, BLACK));
             else if (i == 62 || i == 57)
                 setPiece(i, new Knight(cb, WHITE));
             else if (i == 2 || i == 5)
-                setPiece(i, new Rook(cb, BLACK));
+                setPiece(i, new Bishop(cb, BLACK));
             else if (i == 61 || i == 58)
-                setPiece(i, new Rook(cb, WHITE));
+                setPiece(i, new Bishop(cb, WHITE));
             else if (i == 3)
                 setPiece(i, new Queen(cb, BLACK));
             else if (i == 59)
@@ -96,15 +97,19 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         Square square = (Square) e.getSource();
         showMessageDialog(null, square.getPosition());
         String position = square.getPosition();
+        try {   // when player click on an empty board as from position, it should make any change
+            if (cb.getPiece(position) == null && from.equals(""))
+                return;
+        } catch (IllegalPositionException ignored) {}
 
-        if (from.equals(""))    from = position;
+        if (from.equals(""))    from = position;    // then when player click on a valid position
         else {
-            try {
+            try {   // try to move the piece by calling CB, and let CB handle everything
                 cb.move(from, position, this);
-                this.revalidate();
+                this.revalidate();  // update the panel, mainly for repaint();
             } catch (IllegalMoveException exception) {
-                System.out.println("Unable to move from the piece from " + from + " to " + position);
-            } finally {
+                showMessageDialog(null, "Unable to move from the piece from " + from + " to " + position);
+            } finally { // no mater player makes a valid move or not, rest start position
                 from = "";
             }
         }
