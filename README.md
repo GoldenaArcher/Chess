@@ -11,11 +11,11 @@ java -jar <name-of-the-jar-file-with-correct-version>.jar
 ```
 The initialized board should appeared on the board, and user can move the piece by entering the corresponding position on the terminal.
 
-![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example1.png)
+![example of running](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/example1.png)
 
 After giving the position to move, and the board will be printed again:
 
-![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extra%20files/example2.png)
+![example of running2](https://github.com/GoldenaArcher/Chess/blob/master/extraFiles/example2.png)
 
 ## Project Structure
 - ChessPieces provides a basic attributes of a chess piece, such as color, position, its legal moves. For more details, refer to [ChessPieces.md](https://github.com/GoldenaArcher/Chess/blob/master/src/Main/ChessPieces/ChessPieces.md).
