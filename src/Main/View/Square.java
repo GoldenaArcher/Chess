@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author luhan
+ */
 // this represents an individual square that will be placed on the ChessboardFrame class
 public class Square extends JPanel{
     private String position;
@@ -48,6 +51,8 @@ public class Square extends JPanel{
     }
 
     public void removePiece(){
+        if (piece == null)
+            return;
         piece = null;
         this.remove(label);
     }
