@@ -32,4 +32,4 @@ Started as one of the mini-projects of [CS414](http://www.cs.colostate.edu/~cs41
 
 The instruction of setting up coverage of tests were taken from past course of [cs314](http://www.cs.colostate.edu/~cs314). The original page was posted on Piazza.
 
-Logo is found on [Kung Fu Chess](https://www.kfchess.com), and chess pieces' images are found on [Icons8](https://icons8.com/icon/set/Chess/all).
+Logo is found on [Kung Fu Chess](https://www.kfchess.com), and chess pieces' images are found on [Icons8](https://icons8.com/icon/set/Chess/all) and/or [marcelk.net](https://marcelk.net/chess/pieces/), which indicates that ***free for personal non-commercial use***.

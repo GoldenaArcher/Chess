@@ -4,6 +4,7 @@ import Main.ChessPieces.*;
 import Main.ChessPieces.ChessPiece.Color;
 import Main.Exception.IllegalMoveException;
 import Main.Exception.IllegalPositionException;
+import Main.View.ChessboardFrame;
 
 import java.util.ArrayList;
 
@@ -113,6 +114,41 @@ public class ChessBoard {
     //This method checks if moving the piece from the fromPosition to toPosition is a legal move. Legality is defined based
 // on the rules described above in Section 2.1. If the move is legal, it executes the move, changing the value of the
 // board as needed. Otherwise, the stated exception is thrown.
+    public void move(String from, String to, ChessboardFrame boardFrame) throws IllegalMoveException {
+        ChessPiece fromPiece, toPiece;
+
+        try {
+            fromPiece = getPiece(from);
+            toPiece = getPiece(to);
+        } catch (IllegalPositionException e) {
+            throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
+        }
+
+        if (fromPiece == null)
+            throw new IllegalMoveException(from + " Does not have any chess piece on it");
+
+        ArrayList<String> legalMove = fromPiece.legalMoves();
+
+        if (!legalMove.contains(to))
+            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
+
+        if (placePiece(fromPiece, to)) {  // if move is successful
+            int fromRow = 7 - (from.charAt(1) - '1');
+            int fromCol = from.charAt(0) - 'a';
+            int fromPos = fromRow * 8 + fromCol;
+            int toRow = 7 - (to.charAt(1) - '1');
+            int toCol = to.charAt(0) - 'a';
+            int toPos = toRow * 8 + toCol;
+            board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
+            boardFrame.getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
+            boardFrame.getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
+        } else
+            throw new IllegalMoveException("You cannot move from " + from + " to  " + to + " since both pieces may be the same color");
+
+        if (toPiece instanceof King)
+            System.out.println("Game Over");
+    }
+
     public void move(String from, String to) throws IllegalMoveException {
         ChessPiece fromPiece, toPiece;
 
@@ -131,9 +167,9 @@ public class ChessBoard {
         if (!legalMove.contains(to))
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
 
-        if (placePiece(fromPiece, to))  // if move is successful
+        if (placePiece(fromPiece, to)) {  // if move is successful
             board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
-        else
+        } else
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces may be the same color");
 
         System.out.println(toString());

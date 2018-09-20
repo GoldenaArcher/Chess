@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Chess {
     public static void main(String[] args) {
         new ChessMainFrame();
+        /*
         ChessBoard board = new ChessBoard();
         board.initialize();
         System.out.println(board.toString());
@@ -35,5 +36,6 @@ public class Chess {
         }
         scanner.close();
         System.exit(0);
+        */
     }
 }

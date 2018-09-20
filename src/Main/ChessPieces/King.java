@@ -12,8 +12,8 @@ import static Main.ChessPieces.ChessPiece.Color.BLACK;
 public class King extends ChessPiece {
     public King (ChessBoard board, Color color) {
         super(board, color);
-        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_king.png");
-        else setPath("./extraFiles/chessMaterials/white_king.png");
+        if (color == BLACK) setPath("chessMaterials/black_king.png");
+        else setPath("chessMaterials/white_king.png");
     }
 
     /*

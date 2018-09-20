@@ -2,16 +2,19 @@ package Main.View;
 
 import Main.ChessPieces.ChessPiece;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 // this represents an individual square that will be placed on the ChessboardFrame class
 public class Square extends JPanel{
     private String position;
+    private JLabel label;
 
     private ChessPiece piece;
-    //    private Square at(int row, int col) {
-//        return board[row * COLS + col];
-//    }
 
     public Square(String pos) {
 //        this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -19,7 +22,7 @@ public class Square extends JPanel{
     }
 
     public Square(ChessPiece piece, String pos) {
-        if (piece != null)  setPiece(piece);
+        setPiece(piece);
         this.position = pos;
     }
 
@@ -31,12 +34,21 @@ public class Square extends JPanel{
         return piece;
     }
 
+//    to put the image on the board
     public void setPiece(ChessPiece piece) {
         this.piece = piece;
         // set background picture icon
-        ImageIcon image = new javax.swing.ImageIcon(piece.getPath());
-        JLabel label = new JLabel();
-        label.setIcon(image);
-        this.add(label);
+        if (piece != null) {
+            this.position = piece.getPosition();
+            ImageIcon image = new javax.swing.ImageIcon(getClass().getResource(piece.getPath()));
+            label = new JLabel();
+            label.setIcon(image);
+            this.add(label);
+        }
+    }
+
+    public void removePiece(){
+        piece = null;
+        this.remove(label);
     }
 }

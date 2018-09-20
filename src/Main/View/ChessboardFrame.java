@@ -1,6 +1,7 @@
 package Main.View;
 
 import Main.ChessPieces.*;
+import Main.Exception.IllegalMoveException;
 import Main.Operation.ChessBoard;
 
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class ChessboardFrame extends JPanel implements MouseListener {
             "a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3",
             "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2",
             "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"};
+    protected String from;
 
     public ChessboardFrame() {
         cb = new ChessBoard();
@@ -33,44 +35,51 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setLayout(new GridLayout(8, 8));
         initializeSquare();
+        from = "";
     }
 
-    private void setPiece(int i){
-        Square square;
-        if (i == 0 || i == 7)
-            square = new Square(new Bishop(cb, BLACK), pos[i]);
-        else if (i == 63 || i == 56)
-            square = new Square(new Bishop(cb, WHITE), pos[i]);
-        else if (i == 1 || i == 6)
-            square = new Square(new Knight(cb, BLACK), pos[i]);
-        else if (i == 62 || i == 57)
-            square = new Square(new Knight(cb, WHITE), pos[i]);
-        else if (i == 2 || i == 5)
-            square = new Square(new Rook(cb, BLACK), pos[i]);
-        else if (i == 61 || i == 58)
-            square = new Square(new Rook(cb, WHITE), pos[i]);
-        else if (i == 3)
-            square = new Square(new Queen(cb, BLACK), pos[i]);
-        else if (i == 59)
-            square = new Square(new Queen(cb, WHITE), pos[i]);
-        else if (i == 4)
-            square = new Square(new King(cb, BLACK), pos[i]);
-        else if (i == 60)
-            square = new Square(new King(cb, WHITE), pos[i]);
-        else if (i >= 8 && i <= 15)
-            square = new Square(new Pawn(cb, BLACK), pos[i]);
-        else if (i >= 48 && i <= 55)
-            square = new Square(new Pawn(cb, WHITE), pos[i]);
-        else
-            square = new Square(pos[i]);
-
+    void setPiece(int i, ChessPiece piece){
+        Square square = new Square(piece, pos[i]);
         board[i] = square;
+        String name = "";
+        if (piece != null)
+            name = piece.getClass().getSimpleName();
+    }
+
+    public Square getSquare(int i){
+        return board[i];
     }
 
     private void initializeSquare(){
         int count = 0, circle = 1;      // variables to keep track how to add square's color
         for (int i = 0; i < 64; i++) {  // implement each cell with the given color
-            setPiece(i);
+            if (i == 0 || i == 7)
+                setPiece(i, new Bishop(cb, BLACK));
+            else if (i == 63 || i == 56)
+                setPiece(i, new Bishop(cb, WHITE));
+            else if (i == 1 || i == 6)
+                setPiece(i, new Knight(cb, BLACK));
+            else if (i == 62 || i == 57)
+                setPiece(i, new Knight(cb, WHITE));
+            else if (i == 2 || i == 5)
+                setPiece(i, new Rook(cb, BLACK));
+            else if (i == 61 || i == 58)
+                setPiece(i, new Rook(cb, WHITE));
+            else if (i == 3)
+                setPiece(i, new Queen(cb, BLACK));
+            else if (i == 59)
+                setPiece(i, new Queen(cb, WHITE));
+            else if (i == 4)
+                setPiece(i, new King(cb, BLACK));
+            else if (i == 60)
+                setPiece(i, new King(cb, WHITE));
+            else if (i <= 15)
+                setPiece(i, new Pawn(cb, BLACK));
+            else if (i >= 48)
+                setPiece(i, new Pawn(cb, WHITE));
+            else
+            setPiece(i, null);
+
             board[i].addMouseListener(this);
             if (count % 2 == 0) board[i].setBackground(Color.WHITE);
             else board[i].setBackground(Color.lightGray);
@@ -84,9 +93,23 @@ public class ChessboardFrame extends JPanel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-//        @TODO get the location of mouse clicked
         Square square = (Square) e.getSource();
         showMessageDialog(null, square.getPosition());
+        String position = square.getPosition();
+
+        if (from.equals(""))    from = position;
+        else {
+            try {
+                cb.move(from, position, this);
+                this.revalidate();
+            } catch (IllegalMoveException exception) {
+                System.out.println("Unable to move from the piece from " + from + " to " + position);
+            } finally {
+                from = "";
+            }
+        }
+
+        repaint();
     }
 
     @Override
@@ -99,6 +122,12 @@ public class ChessboardFrame extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+//        Code not working, maybe come back and try to fix it later
+//        Square square = (Square) e.getSource();
+//        JLabel label = new JLabel("notice");
+//        label.setToolTipText(square.getPosition());
+//        this.add(label);
+//        this.setVisible(true);
     }
 
     @Override

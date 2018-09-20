@@ -13,8 +13,8 @@ import static Main.ChessPieces.ChessPiece.Color.BLACK;
 public class Knight extends  ChessPiece{
     public Knight (ChessBoard board, Color color) {
         super(board, color);
-        if (color == BLACK) setPath("./extraFiles/chessMaterials/black_knight.png");
-        else setPath("./extraFiles/chessMaterials/white_knight.png");
+        if (color == BLACK) setPath("chessMaterials/black_knight.png");
+        else setPath("chessMaterials/white_knight.png");
     }
 
     /*
