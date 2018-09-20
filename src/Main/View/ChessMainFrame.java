@@ -6,7 +6,6 @@ import javax.swing.*;       // all different frames of GUI
 /**
  * @author Lu Han
  */
-
 public class ChessMainFrame extends JFrame {
 
 //    private JPanel[] jPanel;   // 2 panel, 1 for the game board and the other for game record

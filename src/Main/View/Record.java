@@ -3,6 +3,9 @@ package Main.View;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author luhan
+ */
 // this class serves the purpose displays all the moves on the board
 public class Record extends JPanel {
     public Record() {

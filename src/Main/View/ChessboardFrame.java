@@ -13,6 +13,9 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import static Main.ChessPieces.ChessPiece.Color.WHITE;
 import static Main.ChessPieces.ChessPiece.Color.BLACK;
 
+/**
+ * @author luhan
+ */
 // this class set up a chess board GUI, basically serve the same purpose as ChessBoard, but the CB is doing actual work as now
 public class ChessboardFrame extends JPanel implements MouseListener {
     private Square[] board;
@@ -41,9 +44,6 @@ public class ChessboardFrame extends JPanel implements MouseListener {
     void setPiece(int i, ChessPiece piece){
         Square square = new Square(piece, pos[i]);
         board[i] = square;
-        String name = "";
-        if (piece != null)
-            name = piece.getClass().getSimpleName();
     }
 
     public Square getSquare(int i){

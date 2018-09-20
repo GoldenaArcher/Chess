@@ -141,6 +141,7 @@ public class ChessBoard {
             int toPos = toRow * 8 + toCol;
             board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
             boardFrame.getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
+            boardFrame.getSquare(toPos).removePiece();
             boardFrame.getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
         } else
             throw new IllegalMoveException("You cannot move from " + from + " to  " + to + " since both pieces may be the same color");
