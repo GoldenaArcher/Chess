@@ -108,12 +108,11 @@ public class ChessboardFrame extends JPanel implements MouseListener {
                 cb.move(from, position, this);
                 this.revalidate();  // update the panel, mainly for repaint();
             } catch (IllegalMoveException exception) {
-                showMessageDialog(null, "Unable to move from the piece from " + from + " to " + position);
+                showMessageDialog(null, exception.getMessage());
             } finally { // no mater player makes a valid move or not, rest start position
                 from = "";
             }
         }
-
         repaint();
     }
 

@@ -1,3 +1,4 @@
-./.idea/*
-./.metadata/*
-./out/*
+.idea/*
+.idea/workspace.xml
+/.metadata/*
+out/*

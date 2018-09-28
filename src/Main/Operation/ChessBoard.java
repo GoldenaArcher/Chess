@@ -17,9 +17,11 @@ import static Main.ChessPieces.ChessPiece.Color.BLACK;
 public class ChessBoard {
     private ChessPiece[][] board;
     private King kingB, kingW;
+    private boolean whiteMove;
 
     public ChessBoard() {
         board = new ChessPiece[8][8];
+        whiteMove = true;
     }
 
     //    this is a helper function to implements the chess pieces on the board for initialization
@@ -124,8 +126,9 @@ public class ChessBoard {
             throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
         }
 
-        if (fromPiece == null)
+        if (fromPiece == null) {
             throw new IllegalMoveException(from + " Does not have any chess piece on it");
+        }
 
         ArrayList<String> legalMove = fromPiece.legalMoves();
 
