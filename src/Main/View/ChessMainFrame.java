@@ -1,7 +1,7 @@
 package Main.View;
 
 import java.awt.*;
-import javax.swing.*;       // all different frames of GUI
+import javax.swing.*;
 
 /**
  * @author Lu Han
