@@ -135,51 +135,71 @@ public class ChessBoard {
         if (!legalMove.contains(to))
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
 
+        int fromRow = 7 - (from.charAt(1) - '1');
+        int fromCol = from.charAt(0) - 'a';
+        int fromPos = fromRow * 8 + fromCol;
+        int toRow = 7 - (to.charAt(1) - '1');
+        int toCol = to.charAt(0) - 'a';
+        int toPos = toRow * 8 + toCol;
         if (placePiece(fromPiece, to)) {  // if move is successful
-            int fromRow = 7 - (from.charAt(1) - '1');
-            int fromCol = from.charAt(0) - 'a';
-            int fromPos = fromRow * 8 + fromCol;
-            int toRow = 7 - (to.charAt(1) - '1');
-            int toCol = to.charAt(0) - 'a';
-            int toPos = toRow * 8 + toCol;
             board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
-            boardFrame.getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
-            boardFrame.getSquare(toPos).removePiece();
-            boardFrame.getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
+            updatePiece(fromPos, toPos, fromPiece, boardFrame);
         } else
             throw new IllegalMoveException("You cannot move from " + from + " to  " + to + " since both pieces may be the same color");
 
-        if (toPiece instanceof King)
+        if (toPiece instanceof King) {
             System.out.println("Game Over");
-    }
-
-    public void move(String from, String to) throws IllegalMoveException {
-        ChessPiece fromPiece, toPiece;
-
-        try {
-            fromPiece = getPiece(from);
-            toPiece = getPiece(to);
-        } catch (IllegalPositionException e) {
-            throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
+            boardFrame.gameOver();
         }
 
-        if (fromPiece == null)
-            throw new IllegalMoveException(from + " Does not have any chess piece on it");
+        boardFrame.repaint();
 
-        ArrayList<String> legalMove = fromPiece.legalMoves();
+        pawnPromotion(fromPos, toPos, to, fromPiece, boardFrame);
+    }
 
-        if (!legalMove.contains(to))
-            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
+    private void updatePiece(int fromPos, int toPos, ChessPiece fromPiece, ChessboardFrame boardFrame){
+        boardFrame.getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
+        boardFrame.getSquare(toPos).removePiece();
+        boardFrame.getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
+    }
 
-        if (placePiece(fromPiece, to)) {  // if move is successful
-            board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
-        } else
-            throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since both pieces may be the same color");
+    //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
+// rook, a bishop, or a knight, of the same colour as the pawn, at the player's choice and without taking into account
+// the other pieces still remaining on the chessboard. The effect of the promoted piece is immediate and permanent!
+    private void pawnPromotion(int fromPos, int toPos, String to, ChessPiece toPiece, ChessboardFrame boardFrame) {
+        int row = 7 - toPiece.getPosition().charAt(1) + '1';
 
-        System.out.println(toString());
+        if (!(toPiece instanceof Pawn))     // if moved piece is not pawn, do nothing
+            return;
 
-        if (toPiece instanceof King)
-            System.out.println("Game Over");
+        if ((toPiece.getColor() == BLACK && row != 7) || (toPiece.getColor() == WHITE && row != 0))
+            return;
+
+//        0: queen, 1: bishop, 2: Knight, 3: Rook, the previous default value has been set to queen
+        String option = boardFrame.pawnPromotion();
+        ChessPiece piece = null;
+
+        switch (option) {
+            case "queen":
+                piece = new Queen(this, toPiece.getColor());
+                break;
+            case "bishop":
+                piece = new Bishop(this, toPiece.getColor());
+                break;
+            case "knight":
+                piece = new Knight(this, toPiece.getColor());
+                break;
+            case "rook":
+                piece = new Rook(this, toPiece.getColor());
+                break;
+        }
+
+        try {
+            piece.setPosition(to);  // illegal test has been set in the move, so just choose to ignore it
+        } catch (IllegalPositionException ignored) {}
+
+        updatePiece(fromPos, toPos, piece, boardFrame);
+        boardFrame.repaint();
     }
 
     //    @TODO check if move leads to check

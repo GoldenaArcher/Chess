@@ -120,6 +120,7 @@ public class ChessBoardTest {
         }
     }
 
+    /*
     @Test       // at this time, the board has been initialized
     public void move() throws IllegalMoveException {
 //        move white pieces, and try to scatter moved pieces if possible
@@ -196,4 +197,5 @@ public class ChessBoardTest {
     public void moveIllegal7() throws IllegalMoveException {
         chessBoard.move("c1", "a3");    // move Bishop over to blocked path
     }
+    */
 }
