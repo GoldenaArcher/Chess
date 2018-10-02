@@ -119,20 +119,20 @@ public class ChessBoard {
     public void move(String from, String to, ChessboardFrame boardFrame) throws IllegalMoveException {
         ChessPiece fromPiece, toPiece;
 
-        try {
+        try {   // check if both position to see if they are legal
             fromPiece = getPiece(from);
             toPiece = getPiece(to);
         } catch (IllegalPositionException e) {
             throw new IllegalMoveException("Check the position of " + from + " and " + to + ", the position may be illegal");
         }
 
-        if (fromPiece == null) {
+        if (fromPiece == null) {    // try to move things from nothing, BTW, this is handled in GUI
             throw new IllegalMoveException(from + " Does not have any chess piece on it");
         }
 
         ArrayList<String> legalMove = fromPiece.legalMoves();
 
-        if (!legalMove.contains(to))
+        if (!legalMove.contains(to))    // check to position is a legal moves
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
 
         int fromRow = 7 - (from.charAt(1) - '1');
@@ -141,9 +141,9 @@ public class ChessBoard {
         int toRow = 7 - (to.charAt(1) - '1');
         int toCol = to.charAt(0) - 'a';
         int toPos = toRow * 8 + toCol;
-        if (placePiece(fromPiece, to)) {  // if move is successful
+        if (placePiece(fromPiece, to)) {  // if move is successful, which should since it's a legal move
             board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
-            updatePiece(fromPos, toPos, fromPiece, boardFrame);
+            boardFrame.updatePiece(fromPos, toPos, fromPiece); // update GUI stuffs
         } else
             throw new IllegalMoveException("You cannot move from " + from + " to  " + to + " since both pieces may be the same color");
 
@@ -151,16 +151,8 @@ public class ChessBoard {
             System.out.println("Game Over");
             boardFrame.gameOver();
         }
-
-        boardFrame.repaint();
-
+        
         pawnPromotion(fromPos, toPos, to, fromPiece, boardFrame);
-    }
-
-    private void updatePiece(int fromPos, int toPos, ChessPiece fromPiece, ChessboardFrame boardFrame){
-        boardFrame.getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
-        boardFrame.getSquare(toPos).removePiece();
-        boardFrame.getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
     }
 
     //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
@@ -173,7 +165,7 @@ public class ChessBoard {
             return;
 
         if ((toPiece.getColor() == BLACK && row != 7) || (toPiece.getColor() == WHITE && row != 0))
-            return;
+            return; // if the pawn hasn't reach the position, do nothing
 
 //        0: queen, 1: bishop, 2: Knight, 3: Rook, the previous default value has been set to queen
         String option = boardFrame.pawnPromotion();
@@ -198,8 +190,9 @@ public class ChessBoard {
             piece.setPosition(to);  // illegal test has been set in the move, so just choose to ignore it
         } catch (IllegalPositionException ignored) {}
 
-        updatePiece(fromPos, toPos, piece, boardFrame);
-        boardFrame.repaint();
+//        place piece will return false, manually place piece on the position
+        board[row][to.charAt(0) - 'a'] = piece;
+        boardFrame.updatePiece(fromPos, toPos, piece);
     }
 
     //    @TODO check if move leads to check

@@ -49,7 +49,7 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         board[i] = square;
     }
 
-    public Square getSquare(int i) {
+    private Square getSquare(int i) {
         return board[i];
     }
 
@@ -124,6 +124,12 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         return option != null ? option : "queen";
     }
 
+    public void updatePiece(int fromPos, int toPos, ChessPiece fromPiece) { // update GUI stuffs, let GUI handle GUI
+        getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
+        getSquare(toPos).removePiece();
+        getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         Square square = (Square) e.getSource();
@@ -146,6 +152,7 @@ public class ChessboardFrame extends JPanel implements MouseListener {
                 from = "";
             }
         }
+        repaint();
     }
 
     @Override

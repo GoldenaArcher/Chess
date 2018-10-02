@@ -7,17 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e904d20-fd24-4b17-a833-fdb1bfe0539f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Main/Operation/Record.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Main/View/ChessMainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Main/View/ChessMainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Main/View/ChessboardFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/Main/View/ChessboardFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/Main/View/Record.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Operation/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Operation/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/View/ChessMainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/View/ChessMainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/View/ChessboardFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/View/ChessboardFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main/View/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/View/RecordGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/ChessBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/ChessBoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/View/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/View/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/View/View.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/View/View.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,7 +63,7 @@
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="java" value="121" />
-          <entry key="md" value="21" />
+          <entry key="md" value="22" />
           <entry key="png" value="3" />
         </counts>
       </usages-collector>
@@ -78,21 +71,21 @@
         <counts>
           <entry key="Image" value="3" />
           <entry key="JAVA" value="121" />
-          <entry key="Markdown" value="21" />
+          <entry key="Markdown" value="22" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="49" />
-          <entry key="java" value="12185" />
-          <entry key="md" value="2930" />
+          <entry key="java" value="12701" />
+          <entry key="md" value="2999" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12185" />
-          <entry key="Markdown" value="2930" />
+          <entry key="JAVA" value="12701" />
+          <entry key="Markdown" value="2999" />
           <entry key="PLAIN_TEXT" value="49" />
         </counts>
       </usages-collector>
@@ -112,13 +105,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main/Operation/ChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="177" column="99" selection-start-line="177" selection-start-column="99" selection-end-line="177" selection-end-column="99" />
+            <state relative-caret-position="328">
+              <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#ChessBoard#0;class#ChessBoard#0" expanded="true" />
-                <element signature="method#move#0;class#ChessBoard#0" expanded="true" />
-                <element signature="method#updatePiece#0;class#ChessBoard#0" expanded="true" />
+                <element signature="method#placePiece#0;class#ChessBoard#0" expanded="true" />
+                <element signature="method#pawnPromotion#0;class#ChessBoard#0" expanded="true" />
                 <element signature="method#check#0;class#ChessBoard#0" expanded="true" />
               </folding>
             </state>
@@ -128,15 +121,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/View/ChessboardFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+            <state relative-caret-position="328">
+              <caret line="154" column="18" selection-start-line="154" selection-start-column="18" selection-end-line="154" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1858#1859#0" expanded="true" />
                 <element signature="e#1889#1890#0" expanded="true" />
-                <element signature="method#pawnPromotion#0;class#ChessboardFrame#0" expanded="true" />
                 <element signature="e#4133#4217#0" expanded="true" />
-                <element signature="method#mouseClicked#0;class#ChessboardFrame#0" expanded="true" />
+                <element signature="method#updatePiece#0;class#ChessboardFrame#0" expanded="true" />
                 <element signature="method#mouseEntered#0;class#ChessboardFrame#0" expanded="true" />
                 <element signature="e#5347#5414#0" expanded="true" />
               </folding>
@@ -147,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/View/ChessMainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
+            <state relative-caret-position="328">
               <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
               <folding>
                 <element signature="method#ChessMainFrame#0;class#ChessMainFrame#0" expanded="true" />
@@ -159,8 +151,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/View/Square.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="40" column="89" selection-start-line="40" selection-start-column="85" selection-end-line="40" selection-end-column="92" />
+            <state relative-caret-position="138">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <folding>
+                <element signature="method#setPiece#0;class#Square#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -241,7 +236,6 @@
         <option value="$PROJECT_DIR$/src/Main/Operation/IllegalPositionException.java" />
         <option value="$PROJECT_DIR$/src/Main/Operation/IllegalMoveException.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/ChessPieces.md" />
-        <option value="$PROJECT_DIR$/src/Main/View/View.md" />
         <option value="$PROJECT_DIR$/src/Main/Exception/Exception.md" />
         <option value="$PROJECT_DIR$/src/Main/View/Board.java" />
         <option value="$PROJECT_DIR$/src/Main/View/Cell.java" />
@@ -255,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/Bishop.java" />
         <option value="$PROJECT_DIR$/src/Main/Operation/Operation.md" />
         <option value="$PROJECT_DIR$/src/Main/Chess.java" />
-        <option value="$PROJECT_DIR$/src/Main/View/Square.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Main/View/Record.java" />
@@ -263,6 +256,8 @@
         <option value="$PROJECT_DIR$/src/Main/View/ChessMainFrame.java" />
         <option value="$PROJECT_DIR$/src/Main/ChessPieces/Pawn.java" />
         <option value="$PROJECT_DIR$/src/Test/ChessBoardTest.java" />
+        <option value="$PROJECT_DIR$/src/Main/View/View.md" />
+        <option value="$PROJECT_DIR$/src/Main/View/Square.java" />
         <option value="$PROJECT_DIR$/src/Main/View/ChessboardFrame.java" />
         <option value="$PROJECT_DIR$/src/Main/Operation/ChessBoard.java" />
       </list>
@@ -311,20 +306,6 @@
               <item name="Chess" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Main" type="462c0819:PsiDirectoryNode" />
-              <item name="ChessPieces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Chess" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chess" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Main" type="462c0819:PsiDirectoryNode" />
-              <item name="Operation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Chess" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Chess" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Main" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -344,7 +325,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538497248220" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538501180213" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/files/JavaProgram-master/Painter" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -479,7 +460,7 @@
       <workItem from="1537878377476" duration="847000" />
       <workItem from="1537926339364" duration="7000" />
       <workItem from="1538127248425" duration="492000" />
-      <workItem from="1538296032823" duration="13790000" />
+      <workItem from="1538296032823" duration="16900000" />
     </task>
     <task id="LOCAL-00001" summary="finish test class for knight&#10;close issue #7&#10;close issue #6">
       <created>1537024087300</created>
@@ -523,13 +504,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89348000" />
+    <option name="totallyTimeSpent" value="92458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1633" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16507937" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16507937" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -538,7 +519,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36550975" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36550975" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.54338396" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -634,16 +615,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="95">
             <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/View/View.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="38">
-            <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
@@ -787,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/View/Square.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="40" column="89" selection-start-line="40" selection-start-column="85" selection-end-line="40" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Chess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -805,34 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="864" column="38" selection-start-line="864" selection-start-column="22" selection-end-line="864" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Operation/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Operation/Record.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding>
-            <element signature="docComment;class#Record#0" expanded="true" />
-            <element signature="method#Record#0;class#Record#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/View/RecordGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="method#Record#0;class#Record#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -853,9 +789,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/View/View.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="152">
+            <caret line="8" column="104" selection-start-line="8" selection-start-column="104" selection-end-line="8" selection-end-column="104" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/View/RecordGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="method#Record#0;class#Record#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Operation/Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding>
+            <element signature="docComment;class#Record#0" expanded="true" />
+            <element signature="method#Record#0;class#Record#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Operation/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/View/ChessMainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
+        <state relative-caret-position="328">
           <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
           <folding>
             <element signature="method#ChessMainFrame#0;class#ChessMainFrame#0" expanded="true" />
@@ -863,17 +837,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/View/Square.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="method#setPiece#0;class#Square#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/View/ChessboardFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+        <state relative-caret-position="328">
+          <caret line="154" column="18" selection-start-line="154" selection-start-column="18" selection-end-line="154" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1858#1859#0" expanded="true" />
             <element signature="e#1889#1890#0" expanded="true" />
-            <element signature="method#pawnPromotion#0;class#ChessboardFrame#0" expanded="true" />
             <element signature="e#4133#4217#0" expanded="true" />
-            <element signature="method#mouseClicked#0;class#ChessboardFrame#0" expanded="true" />
+            <element signature="method#updatePiece#0;class#ChessboardFrame#0" expanded="true" />
             <element signature="method#mouseEntered#0;class#ChessboardFrame#0" expanded="true" />
             <element signature="e#5347#5414#0" expanded="true" />
           </folding>
@@ -882,13 +865,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Operation/ChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="177" column="99" selection-start-line="177" selection-start-column="99" selection-end-line="177" selection-end-column="99" />
+        <state relative-caret-position="328">
+          <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#ChessBoard#0;class#ChessBoard#0" expanded="true" />
-            <element signature="method#move#0;class#ChessBoard#0" expanded="true" />
-            <element signature="method#updatePiece#0;class#ChessBoard#0" expanded="true" />
+            <element signature="method#placePiece#0;class#ChessBoard#0" expanded="true" />
+            <element signature="method#pawnPromotion#0;class#ChessBoard#0" expanded="true" />
             <element signature="method#check#0;class#ChessBoard#0" expanded="true" />
           </folding>
         </state>
