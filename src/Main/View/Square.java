@@ -19,7 +19,7 @@ public class Square extends JPanel{
 
     private ChessPiece piece;
 
-    public Square(ChessPiece piece, String pos) {
+    Square(ChessPiece piece, String pos) {
         setPiece(piece);
         this.position = pos;
     }
@@ -45,7 +45,7 @@ public class Square extends JPanel{
         }
     }
 
-    public void removePiece(){
+    void removePiece(){
         if (piece == null)
             return;
         piece = null;

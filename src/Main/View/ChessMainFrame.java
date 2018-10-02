@@ -10,11 +10,11 @@ public class ChessMainFrame extends JFrame {
 
 //    private JPanel[] jPanel;   // 2 panel, 1 for the game board and the other for game record
     private ChessboardFrame board;   // 2 panel, 1 for the game board and the other for game record
-    private Record record;
+    private RecordGUI recordgui;
 
     public ChessMainFrame() {
-        board = new ChessboardFrame();
-        record = new Record();
+        board = new ChessboardFrame(this);
+        recordgui = new RecordGUI();
         setFrame();
     }
 
@@ -37,8 +37,9 @@ public class ChessMainFrame extends JFrame {
 //        add 2 panels into frame
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
         this.add(board, BorderLayout.WEST);
-        this.add(record, BorderLayout.EAST);
+        this.add(recordgui, BorderLayout.EAST);
 
         this.setVisible(true);
     }
 }
+

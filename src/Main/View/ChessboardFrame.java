@@ -19,6 +19,7 @@ import static Main.ChessPieces.ChessPiece.Color.BLACK;
  */
 // this class set up a chess board GUI, basically serve the same purpose as ChessBoard, but the CB is doing actual work as now
 public class ChessboardFrame extends JPanel implements MouseListener {
+    private ChessMainFrame mainFrame;
     private Square[] board;
     private ChessBoard cb;
     private String[] pos = {"a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8",
@@ -31,7 +32,8 @@ public class ChessboardFrame extends JPanel implements MouseListener {
             "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"};
     protected String from;
 
-    ChessboardFrame() {
+    ChessboardFrame(ChessMainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         cb = new ChessBoard();
         cb.initialize();
         board = new Square[64];
@@ -42,16 +44,16 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         from = "";
     }
 
-    private void setPiece(int i, ChessPiece piece){
+    private void setPiece(int i, ChessPiece piece) {
         Square square = new Square(piece, pos[i]);
         board[i] = square;
     }
 
-    public Square getSquare(int i){
+    private Square getSquare(int i) {
         return board[i];
     }
 
-    private void initializeSquare(){
+    private void initializeSquare() {
         int count = 0, circle = 1;      // variables to keep track how to add square's color
         for (int i = 0; i < 64; i++) {  // implement each cell with the given color
             if (i == 0 || i == 7)
@@ -79,7 +81,7 @@ public class ChessboardFrame extends JPanel implements MouseListener {
             else if (i >= 48)
                 setPiece(i, new Pawn(cb, WHITE));
             else
-            setPiece(i, null);
+                setPiece(i, null);
 
             board[i].addMouseListener(this);
             if (count % 2 == 0) board[i].setBackground(Color.WHITE);
@@ -92,6 +94,42 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         }
     }
 
+    //    JOptionPane to end/restart the game
+    public void gameOver() {
+        Object[] options = {"Restart", "End Game"};
+        int n = JOptionPane.showOptionDialog(this,
+                "Would you like restart the game?",
+                "Game Over",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,     //do not use a custom Icon
+                options,  //the titles of buttons
+                options[0]); //default button title
+        if (n == 0) mainFrame = new ChessMainFrame(); // restart a new game
+    }
+
+    public String pawnPromotion() {
+//        0: queen, by default people want to change to the most widely moving piece
+//        1: bishop, 2: Knight, 3: Rook
+        Object[] possibilities = {"queen", "bishop", "knight", "rook"};
+        String option = (String) JOptionPane.showInputDialog(
+                this,
+                "Which piece do you want promote to",
+                "Pawn Promotion",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities,
+                "queen");
+
+        return option != null ? option : "queen";
+    }
+
+    public void updatePiece(int fromPos, int toPos, ChessPiece fromPiece) { // update GUI stuffs, let GUI handle GUI
+        getSquare(fromPos).removePiece();    // remove the piece from the board(from pos)
+        getSquare(toPos).removePiece();
+        getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         Square square = (Square) e.getSource();
@@ -100,9 +138,10 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         try {   // when player click on an empty board as from position, it should make any change
             if (cb.getPiece(position) == null && from.equals(""))
                 return;
-        } catch (IllegalPositionException ignored) {}
+        } catch (IllegalPositionException ignored) {
+        }
 
-        if (from.equals(""))    from = position;    // then when player click on a valid position
+        if (from.equals("")) from = position;    // then when player click on a valid position
         else {
             try {   // try to move the piece by calling CB, and let CB handle everything
                 cb.move(from, position, this);
