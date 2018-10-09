@@ -46,7 +46,7 @@ public class Square extends JPanel{
     }
 
     void removePiece(){
-        if (piece == null)
+        if (this == null || piece == null)
             return;
         piece = null;
         this.remove(label);

@@ -2,6 +2,7 @@ package Main.ChessPieces;
 
 import Main.Operation.ChessBoard;
 import Main.Exception.IllegalPositionException;
+import Main.Operation.Record;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,12 +19,36 @@ public class Pawn extends ChessPiece {
         else setPath("chessMaterials/white_pawn.png");
     }
 
-    //    @TODO implement En Passant after getting stack to work of recording all the movement
 //    special moves are En Passant and Pawn promotion
 //    A pawn, attacking a square crossed by an opponent's pawn which has [just] been advanced two squares in one move from
 // its original square, may capture this opponent's pawn as though the latter had been moved only one square. This capture
 // may only be made in [immediate] reply to such an advance, and is called an "en passant" capture.
-    private void enPassant() {
+    public boolean enPassant(String to) {
+        Record record = board.getRecord();
+//        if it's initial move, then it could not possibly be en Passant
+        if (record.size() == 0)
+            return false;
+//        the order is: fromPiece, toPiece, from, to
+        Object[] lastRecord = record.lastMove();
+        ChessPiece piece = (ChessPiece) lastRecord[0];
+        String lastFrom = (String) lastRecord[2];
+        String lastTo = (String) lastRecord[3];
+
+//        if last move is not opponent's pawn move
+        if (!(piece instanceof Pawn && piece.color != this.color))
+            return false;
+//        if last move's piece is not adjacent to the current moving piece
+        if (piece.row + 1 == row && piece.row - 1 == row) {
+            System.out.println(piece.row);
+            return false;
+        }
+//        if opponent's isn't just moved 2 squares, which guaranteed that's pawn's 1st move
+        if (Math.abs(lastFrom.charAt(1) - lastTo.charAt(1)) != 2)
+            return false;
+//        if that is not a en Passant, just regular straightforward move
+        if (to.charAt(0) != lastTo.charAt(0))
+            return false;
+        return true;
     }
 
 //    capture is different for pawn because it attacks out of it's moving range

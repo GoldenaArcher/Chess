@@ -16,6 +16,7 @@ public abstract class ChessPiece {
     protected int row, column;
 
     private String path;    // the path of image
+    private boolean moved;
 
     //    A piece of chess piece needs color as it's property, and position
 
@@ -29,6 +30,7 @@ public abstract class ChessPiece {
         this.color = color;
         this.column = -1;
         this.row = -1;
+        this.moved = false;
     }
 
     public String getPath() {
@@ -82,6 +84,14 @@ public abstract class ChessPiece {
             }
         }
         return null;
+    }
+
+    public void move() {
+        this.moved = true;
+    }
+
+    public boolean isMoved() {
+        return moved;
     }
 
     abstract public ArrayList<String> legalMoves();

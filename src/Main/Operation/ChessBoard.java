@@ -18,10 +18,12 @@ public class ChessBoard {
     private ChessPiece[][] board;
     private King kingB, kingW;
     private boolean whiteMove;
+    private Record record;
 
     public ChessBoard() {
         board = new ChessPiece[8][8];
         whiteMove = true;
+        record = new Record();
     }
 
     //    this is a helper function to implements the chess pieces on the board for initialization
@@ -132,7 +134,17 @@ public class ChessBoard {
 
         ArrayList<String> legalMove = fromPiece.legalMoves();
 
-        if (!legalMove.contains(to))    // check to position is a legal moves
+//        if there is other piece at to position, then it cannot be en Passant, or the current moving piece is not Pawn
+//        if the piece meets 1st 2 conditions, then check if it's en Passant
+        if (toPiece == null && fromPiece instanceof Pawn && ((Pawn) fromPiece).enPassant(to)) {
+            String prevTo = (String) record.lastMove()[3];  // previous piece is set to empty
+            board[7 - (prevTo.charAt(1) - '1')][prevTo.charAt(0) - 'a'] = null;
+            int prevRow = 7 - (prevTo.charAt(1) - '1');
+            int prevCol = prevTo.charAt(0) - 'a';
+            int prevPos = prevRow * 8 + prevCol;    // find previous moved piece's position, and remove that piece
+            boardFrame.updatePiece(-1, prevPos, null);
+//            @TODO add proper way to implement the record
+        } else if (!legalMove.contains(to))    // check to position is a legal moves
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
 
         int fromRow = 7 - (from.charAt(1) - '1');
@@ -142,7 +154,11 @@ public class ChessBoard {
         int toCol = to.charAt(0) - 'a';
         int toPos = toRow * 8 + toCol;
         if (placePiece(fromPiece, to)) {  // if move is successful, which should since it's a legal move
-            board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;   // set the original piece to null after move
+            fromPiece.move();   // fromPiece moved successfully
+            // add record, the order is: fromPiece, toPiece, from, to. In the future, just need to place toPiece on to, fromPiece on from
+            record.writeRecord(new Object[]{fromPiece, toPiece == null ? "" : toPiece, from, to});
+            // set the original piece to null after move
+            board[7 - (from.charAt(1) - '1')][from.charAt(0) - 'a'] = null;
             boardFrame.updatePiece(fromPos, toPos, fromPiece); // update GUI stuffs
         } else
             throw new IllegalMoveException("You cannot move from " + from + " to  " + to + " since both pieces may be the same color");
@@ -151,8 +167,10 @@ public class ChessBoard {
             System.out.println("Game Over");
             boardFrame.gameOver();
         }
-        
+
         pawnPromotion(fromPos, toPos, to, fromPiece, boardFrame);
+
+        System.out.println(record);
     }
 
     //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
@@ -188,7 +206,8 @@ public class ChessBoard {
 
         try {
             piece.setPosition(to);  // illegal test has been set in the move, so just choose to ignore it
-        } catch (IllegalPositionException ignored) {}
+        } catch (IllegalPositionException ignored) {
+        }
 
 //        place piece will return false, manually place piece on the position
         board[row][to.charAt(0) - 'a'] = piece;
@@ -222,5 +241,9 @@ public class ChessBoard {
             res.append("\n ├─┼─┼─┼─┼─┼─┼─┼─┤\n");
         }
         return res.toString();
+    }
+
+    public Record getRecord() {
+        return record;
     }
 }

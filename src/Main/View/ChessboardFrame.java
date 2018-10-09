@@ -50,6 +50,8 @@ public class ChessboardFrame extends JPanel implements MouseListener {
     }
 
     private Square getSquare(int i) {
+        if (i < 0)  // when call from en Passant
+            return new Square(null, "-1");
         return board[i];
     }
 
@@ -130,10 +132,11 @@ public class ChessboardFrame extends JPanel implements MouseListener {
         getSquare(toPos).setPiece(fromPiece);    // add the piece to the board(to pos)
     }
 
+//    @TODO to implement highlight function
     @Override
     public void mouseClicked(MouseEvent e) {
         Square square = (Square) e.getSource();
-        showMessageDialog(null, square.getPosition());
+//        showMessageDialog(null, square.getPosition());
         String position = square.getPosition();
         try {   // when player click on an empty board as from position, it should make any change
             if (cb.getPiece(position) == null && from.equals(""))
@@ -166,11 +169,14 @@ public class ChessboardFrame extends JPanel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
 //        Code not working, maybe come back and try to fix it later
-//        Square square = (Square) e.getSource();
-//        JLabel label = new JLabel("notice");
-//        label.setToolTipText(square.getPosition());
-//        this.add(label);
-//        this.setVisible(true);
+        Square square = (Square) e.getSource();
+
+        /**
+        JLabel label = new JLabel("notice");
+        label.setToolTipText(square.getPosition());
+        this.add(label);
+        this.setVisible(true);
+        **/
     }
 
     @Override
