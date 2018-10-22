@@ -19,6 +19,7 @@ public class ChessMainFrame extends JFrame {
         recordgui = new RecordGUI();
         setFrame();
         // windows event, ask user to close the window before actually closing it
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -37,7 +38,7 @@ public class ChessMainFrame extends JFrame {
 //    Use this method to generate a basic frame/window of the app
     private void setFrame(){
         this.setSize(1200, 800);
-//        this.setLocationRelativeTo(null);   // make the window to be centered
+        this.setLocationRelativeTo(null);   // make the window to be centered
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension dimension = tk.getScreenSize();
 

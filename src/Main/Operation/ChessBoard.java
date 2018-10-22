@@ -139,20 +139,15 @@ public class ChessBoard {
         if (toPiece == null && fromPiece instanceof Pawn && ((Pawn) fromPiece).enPassant(to)) {
             String prevTo = (String) record.lastMove()[3];  // previous piece is set to empty
             board[7 - (prevTo.charAt(1) - '1')][prevTo.charAt(0) - 'a'] = null;
-            int prevRow = 7 - (prevTo.charAt(1) - '1');
-            int prevCol = prevTo.charAt(0) - 'a';
-            int prevPos = prevRow * 8 + prevCol;    // find previous moved piece's position, and remove that piece
-            boardFrame.updatePiece(-1, prevPos, null);
-//            @TODO add proper way to implement the record
+            int prevPos = posConv(prevTo);    // find previous moved Pawn's position, and remove that piece
+            boardFrame.updatePiece(prevPos, null);  // as it's captured
+//            keyword, the piece moved during en Passant, and the piece's original position
+            record.writeRecord(new Object[]{"enPassant", record.lastMove()[0], prevTo});
         } else if (!legalMove.contains(to))    // check to position is a legal moves
             throw new IllegalMoveException("You cannot move from " + from + " to " + to + " since it is not a legal move");
 
-        int fromRow = 7 - (from.charAt(1) - '1');
-        int fromCol = from.charAt(0) - 'a';
-        int fromPos = fromRow * 8 + fromCol;
-        int toRow = 7 - (to.charAt(1) - '1');
-        int toCol = to.charAt(0) - 'a';
-        int toPos = toRow * 8 + toCol;
+        int fromPos = posConv(from);
+        int toPos = posConv(to);
         if (placePiece(fromPiece, to)) {  // if move is successful, which should since it's a legal move
             fromPiece.move();   // fromPiece moved successfully
             // add record, the order is: fromPiece, toPiece, from, to. In the future, just need to place toPiece on to, fromPiece on from
@@ -171,6 +166,13 @@ public class ChessBoard {
         pawnPromotion(fromPos, toPos, to, fromPiece, boardFrame);
 
         System.out.println(record);
+    }
+
+//    wrap up the method convert String pos to int Pos
+    private int posConv(String pos) {
+        int posRow = 7 - (pos.charAt(1) - '1');
+        int posCol = pos.charAt(0) - 'a';
+        return posRow * 8 + posCol;
     }
 
     //    On reaching the last rank, a pawn must immediately be exchanged, as part of the same move, for [either] a queen, a
